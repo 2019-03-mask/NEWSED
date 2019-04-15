@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  disc_name: MyText
+  item_id: 1
+
+two:
+  disc_name: MyText
+  item_id: 1
