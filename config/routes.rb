@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'homes/top'
   get 'homes/index'
   get 'contacts/top'
+  post 'contacts/create'
   get 'contacts/show'
   get 'contacts/index'
   get 'carts/index'
