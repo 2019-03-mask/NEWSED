@@ -1,0 +1,16 @@
+<h1>ジャンル名</h1>
+
+<%= form_for(@genre, url:genre_index_path) do |f| %>
+
+<h4>アーティスト名</h4>
+<%= f.text_field :genre_name %>
+
+<%= f.submit '登録' %>
+
+
+
+<% end %>
+
+<% @genres.each do |genre| %>
+<%= genre.genre_name %>
+<% end %>

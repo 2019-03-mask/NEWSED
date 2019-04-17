@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :items
   get 'users/top'
   get 'users/edit'
@@ -17,7 +18,9 @@ Rails.application.routes.draw do
   get 'carts/function'
   get 'carts/show'
   get 'carts/complete'
-  get 'artists/index'
+  resources :artists, only:[:index, :create, :new, :destroy]
   devise_for :users
+  resources :genre, only:[:index, :create]
+  resources :lable, only:[:index, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

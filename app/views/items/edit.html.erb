@@ -1,22 +1,68 @@
-<h1>商品情報</h1>
+<h1>商品編集</h1>
 
-<%= form_for(@item) do |item| %>
+<div class="container">
 
-   <h4>シングルorアルバム</h4>
-   <%= item.text_field :item_type %>
+   <div class="row">
 
-   <h4>タイトル</h4>
-   <%= item.text_field :item_name %>
+     <div class="col-sm-4 ">
 
-   <h4>アーティスト名</h4>
+      <%= form_for(@item) do |item| %>
 
-   <h4>価格</h4>
-   <%= item.text_field :price %>
+            <h4>ジャケット写真</h4>
 
-   <h4>レーベル名</h4>
+      <%= item.attachment_field :item_image %>
 
-   <h4>ジャンル</h4>
+     </div>
 
-   <h4>在庫  残り</h4>
+        <div class="col-sm-8">
 
-<% end %>
+            <ul>
+               <li class="item_type">
+                  <label for="item_type">シングル or アルバム</label>
+                  <%= item.select :item_type, [["シングル", "シングル"], ["アルバム", "アルバム"]], :prompt => "選択してください" %>
+               </li>
+
+               <li class="item_name">
+                  <label for="item_name">タイトル</label>
+                  <%= item.text_field :item_name %>
+               </li>
+
+               <li class="artist_name">
+                  <label for="artist_name">アーティスト名</label>
+                  <%= item.text_field :artist_id %>
+               </li>
+
+               <li class="price">
+                  <label for="price">価格</label>
+                  <%= item.text_field :price %>
+               </li>
+
+               <li class="lable_name">
+                  <label for="lable_name">レーベル</label>
+                  <%= item.text_field :lable_id %>
+               </li>
+
+               <li class="genre_name">
+                  <label for="genre_name">ジャンル</label>
+                  <%= item.text_field :genre_id %>
+               </li>
+
+               <h4>ディスク名</h4>
+
+               <li class="stock">
+                  <label for="stock">在庫  残り</label>
+                   <%= item.text_field :stock %> 枚
+               </li>
+
+               <li class="item_states">
+                  <label for="item_states">新品 / 中古</label>
+                  <%= item.select :item_states, [["新品", "新品"], ["中古", "中古"]], :prompt => "選択してください" %>
+               </li>
+
+                  <%= item.submit '商品登録' %>
+             </ul>
+
+         <% end %>
+        </div>
+    </div>
+</div>
