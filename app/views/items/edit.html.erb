@@ -1,2 +1,22 @@
-<h1>Items#edit</h1>
-<p>Find me in app/views/items/edit.html.erb</p>
+<h1>商品情報</h1>
+
+<%= form_for(@item) do |item| %>
+
+   <h4>シングルorアルバム</h4>
+   <%= item.text_field :item_type %>
+
+   <h4>タイトル</h4>
+   <%= item.text_field :item_name %>
+
+   <h4>アーティスト名</h4>
+
+   <h4>価格</h4>
+   <%= item.text_field :price %>
+
+   <h4>レーベル名</h4>
+
+   <h4>ジャンル</h4>
+
+   <h4>在庫  残り</h4>
+
+<% end %>
