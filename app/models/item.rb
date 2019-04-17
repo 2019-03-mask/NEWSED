@@ -9,4 +9,6 @@ class Item < ApplicationRecord
   has_many :reviews
   has_many :carts
 
+  attachment :item_image
+
 end

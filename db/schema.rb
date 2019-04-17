@@ -10,13 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_17_041008) do
+
+ActiveRecord::Schema.define(version: 2019_04_17_060839) do
+
 
   create_table "artists", force: :cascade do |t|
     t.text "artist_name"
     t.text "artist_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "artist_image_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -77,6 +80,7 @@ ActiveRecord::Schema.define(version: 2019_04_17_041008) do
     t.integer "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "item_image_id"
   end
 
   create_table "lables", force: :cascade do |t|
