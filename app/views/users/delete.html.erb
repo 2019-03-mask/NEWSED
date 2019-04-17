@@ -1,2 +1,18 @@
-<h1>Users#delete</h1>
-<p>Find me in app/views/users/delete.html.erb</p>
+<h1>退会手続き</h1>
+<p>登録したメールアドレスを入力して下さい。</p>
+
+<%= form_for(@user) do |f| %>
+  <div class="field">
+    <%= f.label :メールアドレス %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :パスワード %><br />
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+
+　<div class="actions">
+    <%= f.submit "退会" %>
+  </div>
+<% end %>
