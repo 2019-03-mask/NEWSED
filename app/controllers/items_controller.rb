@@ -16,6 +16,7 @@ class ItemsController < ApplicationController
   def create
     item = Item.new(item_params)
     item.save
+    redirect_to items_path
   end
 
   def destroy
@@ -31,6 +32,6 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:item_type, :item_name, :price, :item_image, :stock)
+    params.require(:item).permit(:item_type, :item_name, :price, :item_image, :stock, :artist_id, :lable_id, :genre_id)
   end
 end
