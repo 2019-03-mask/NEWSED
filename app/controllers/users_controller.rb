@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   end
 
   def delete
+    @user = current_user
   end
 
   def index
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to users_top_path
+    redirect_to top_path
   end
 
 

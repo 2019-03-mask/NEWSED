@@ -9,7 +9,7 @@
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
 
   <p>アカウントをお持ちでない方はこちらから</p>
-  <%= button_to "会員登録", new_registration_path(resource_name), class: 'btn btn-default' %>
+  <%= link_to "会員登録", new_user_registration_path, class: 'btn btn-default' %>
 <% end %>
 
 
