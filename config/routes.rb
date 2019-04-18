@@ -18,14 +18,8 @@ Rails.application.routes.draw do
   get 'carts/index'
   get 'carts/function'
   get 'carts/show'
-  get 'carts/complete'
-<<<<<<< HEAD
   resources :artists, only:[:index, :create, :new, :destroy]
-=======
-  get 'artists/index'
 
-
->>>>>>> c419fb926b206813a3470fdb07215e22b8a3f83b
   devise_for :users
   resources :genre, only:[:index, :create]
   resources :lable, only:[:index, :create]
