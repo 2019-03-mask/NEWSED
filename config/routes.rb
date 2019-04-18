@@ -1,25 +1,35 @@
 Rails.application.routes.draw do
 
-  resources :items
-  get 'users/top'
+  resources :items do
+    collection do
+      get :index_used
+    end
+  end
 
-  get 'users/edit'
-  get 'users/purchase_history'
-  get 'users/favorite'
-  get 'users/delete'
-  get 'users/index'
-  get 'users/show'
-  get 'homes/top'
-  get 'homes/index'
-  get '/contacts' => 'contacts#top'
-  post '/contacts' => 'contacts#create'
-  get 'contacts/show'
-  get 'contacts/index'
-  get 'carts/index'
-  get 'carts/function'
-  get 'carts/show'
+  resources :users do
+    collection do
+      get :top
+      get :purchase_history
+    end
+    member do
+      get :favorite
+      post :favorite
+      get :delete
+      post :delete
+  end
+end
+
+  resources :contacts, only:[:create, :show, :index]
+  get 'contacts/top' => 'contacts#top'
+
+  resources :carts, only:[:index, :show]
+  get 'carts/function' => 'carts#function'
+
+
+  resources :homes, only:[:index]
+  get '/' => 'homes#top'
+
   resources :artists, only:[:index, :create, :new, :destroy]
-
   devise_for :users
   resources :genre, only:[:index, :create]
   resources :lable, only:[:index, :create]
