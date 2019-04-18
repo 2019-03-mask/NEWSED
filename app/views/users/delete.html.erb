@@ -2,6 +2,7 @@
 <p>登録したメールアドレスを入力して下さい。</p>
 
 <%= form_for(@user) do |f| %>
+
   <div class="field">
     <%= f.label :メールアドレス %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

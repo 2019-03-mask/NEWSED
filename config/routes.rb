@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  devise_for :users
   resources :items do
     collection do
       get :index_used
@@ -27,10 +27,9 @@ end
 
 
   resources :homes, only:[:index]
-  get '/' => 'homes#top'
+  get '/' => 'homes#top',as: "top"
 
   resources :artists, only:[:index, :create, :new, :destroy]
-  devise_for :users
   resources :genre, only:[:index, :create]
   resources :lable, only:[:index, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

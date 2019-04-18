@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   end
 
   def delete
+    @user = current_user
   end
 
   def index
