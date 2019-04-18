@@ -10,6 +10,11 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @disc = @item.discs.build
+    @song = @disc.songs.build
+    @artists = Artist.all
+    @genres = Genre.all
+    @lables = Lable.all
   end
 
   def edit
@@ -36,6 +41,6 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:item_type, :item_name, :price, :item_image, :stock, :artist_id, :lable_id, :genre_id)
+    params.require(:item).permit(:item_type, :item_name, :price, :item_image, :stock, discs_attributes: [:id, :disc_name, :_destroy, songs_attributes: [:id, :song_title, :_destroy]])
   end
 end

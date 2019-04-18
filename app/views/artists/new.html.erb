@@ -1,13 +1,13 @@
 <h1>アーティスト</h1>
 
-<%= form_for(@artist) do |f| %>
+<%= form_for(@artist) do |t| %>
 
 <h4>アーティスト名</h4>
-<%= f.text_field :artist_name %>
+<%= t.text_field :artist_name %>
 
-<%= f.attachment_field :artist_image %>
+<%= t.attachment_field :artist_image %>
 
-<%= f.submit '登録' %>
+<%= t.submit '登録' %>
 
 <% end %>
 

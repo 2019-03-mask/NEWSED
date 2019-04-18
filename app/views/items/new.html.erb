@@ -1,10 +1,5 @@
 <h1>追加商品</h1>
 
-<div class="container">
-
-	<div class="row">
-
-	  <div class="col-sm-4 ">
 
 		<%= form_for(@item) do |f| %>
 
@@ -12,14 +7,15 @@
 
 		<%= f.attachment_field :item_image %>
 
-	  </div>
-
-		  <div class="col-sm-8">
-
-				<ul>
+				<ul class='create_cd'>
 					<li class="item_type">
 					   <label for="item_type">シングル or アルバム</label>
 					   <%= f.select :item_type, [["シングル", "シングル"], ["アルバム", "アルバム"]], :prompt => "選択してください" %>
+					</li>
+
+					<li class="item_states">
+					   <label for="item_states">新品 / 中古</label>
+					   <%= f.select :item_states, [["新品", "新品"], ["中古", "中古"]], :prompt => "選択してください" %>
 					</li>
 
 					<li class="item_name">
@@ -29,7 +25,17 @@
 
 					<li class="artist_name">
 						<label for="artist_name">アーティスト名</label>
-						<%= f.text_field :artist_id %>
+						<%= f.select :artist_id, @artists.map{|t| [t.artist_name, t.id]}, :prompt => "選択してください" %>
+					</li>
+
+					<li class="lable_name">
+						<label for="lable_name">レーベル</label>
+						<%= f.select :lable_id, @lables.map{|t| [t.lable_name, t.id]}, :prompt => "選択してください" %>
+					</li>
+
+					<li class="genre_name">
+						<label for="genre_name">ジャンル</label>
+						<%= f.select :genre_id, @genres.map{|t| [t.genre_name, t.id]}, :prompt => "選択してください" %>
 					</li>
 
 					<li class="price">
@@ -37,32 +43,21 @@
 					   <%= f.text_field :price %>
 					</li>
 
-					<li class="lable_name">
-						<label for="lable_name">レーベル</label>
-						<%= f.text_field :lable_id %>
-					</li>
-
-					<li class="genre_name">
-						<label for="genre_name">ジャンル</label>
-						<%= f.text_field :genre_id %>
-					</li>
-
-					<h4>ディスク名</h4>
-
 					<li class="stock">
 						<label for="stock">在庫数</label>
 					    <%= f.text_field :stock %> 枚
 					</li>
 
-					<li class="item_states">
-					   <label for="item_states">新品 / 中古</label>
-					   <%= f.select :item_states, [["新品", "新品"], ["中古", "中古"]], :prompt => "選択してください" %>
-					</li>
+					<div id="discs">
+						<%= f.fields_for :discs do |disc| %>
+						<%= render 'disc_fields', f: disc %>
+						<% end %>
+						<div id="links">
+							<%= link_to_add_association 'ディスク追加',f, :discs %>
+						</div>
+					</div>
 
 					   <%= f.submit '商品登録', class: "btn btn-primary" %>
 			    </ul>
 
 			<% end %>
-		  </div>
-	 </div>
-</div>

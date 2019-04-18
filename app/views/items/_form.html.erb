@@ -1,0 +1,10 @@
+
+<h3>ディスク</h3>
+<div id="disks">
+	<%= f.fields_for :disks do |disk| %>
+	<%= render 'disk_fields', f: disk %>
+	<% end %>
+	<div id="links">
+		<%= link_to_add_associasion 'add disk',f, :disks %>
+	</div>
+</div>
