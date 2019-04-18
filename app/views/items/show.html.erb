@@ -1,2 +1,14 @@
 <h1>商品詳細</h1>
+<%= 'CD'@item.item_states %>
+<%= @item.item_name %>
+<%= attachment_image_tag @item :item_image, size: "100x100" %>
+<%= @item.artist.artist_name %>
+<%= @item.item_price %>
+<%= @item.lable.lable_name %>
+<%= @item.genre.genre_name %>
+
+<%= @item.disc.disc_name %>
+<%= @songs.each do |song| %>
+<%= song.song_name %>
+<% end %>
 

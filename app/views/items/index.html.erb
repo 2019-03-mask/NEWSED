@@ -1,2 +1,28 @@
 <h1>新品商品一覧</h1>
-<p>新品商品一覧が表示されます</p>
+    <div class="col-lg-12">
+      <h2>NEW CD</h2>
+      <table class="table table-hover table-inverse">
+
+     <% @items.each do |item| %>
+       <tr>
+       	<td><%= attachment_image_tag item, :item_image, size: "100x100" %>
+      <%= link_to item_path(item.id) do %>
+        <td><%= item.item_name %></td>
+      <% end %>
+      <%= link_to artist_path do %>
+        <td><%= item.artist.arist_name %></td>
+      <% end %>
+        <td><%= item.item_price %></td>
+
+        <td>
+        <% if item.stock == 0 %>
+        <%= 'Sold Out' %>
+        <% else %>
+        <%= item.stock %>
+        <% end %>
+        </td>
+
+       </tr>
+     <% end %>
+    </table>
+   </div>
