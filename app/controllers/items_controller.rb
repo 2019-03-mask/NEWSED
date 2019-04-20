@@ -9,7 +9,8 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @songs = Song.where("disc_id = '#{@item.id}'")
+    @songs = Song.where("disc_id = '#{@item.id - 1}'")
+    @review = Review.new
   end
 
   def new

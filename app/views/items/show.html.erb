@@ -1,5 +1,7 @@
 <h1>商品詳細</h1>
-[CD<%= @item.item_type %>]
+<h2>[CD<%= @item.item_type %>]</h2>
+
+<div class = 'item_information'>
 <%= @item.item_states %>
 <%= @item.item_name %>
 <%= attachment_image_tag @item, :item_image, size: '100x100' %>
@@ -7,10 +9,41 @@
 <%= @item.price %>
 <%= @item.lable.lable_name %>
 <%= @item.genre.genre_name %>
+</div>
 
-<%#ディスク名を表示する記述を作る %>
-
-<%= @songs.each do |song| %>
-<%= song.song_name %>
+<%# ディスク名を表示する記述を作る %>
+<% @songs.each do |song| %>
+<div class ='songs'>
+<%= song.song_title %>
+</div>
 <% end %>
 
+
+
+
+
+
+
+
+
+<%= form_for @review, url: item_reviews_path(item_id: @item.id) do |f| %>
+<div class = 'review'>
+　 <div>
+     <p>コメントタイトル</p>
+      <%= f.text_field :review_title %>
+   </div>
+   <div>
+    <p>コメント本文</p>
+     <%= f.text_area :review_text %>
+   </div>
+<%= f.submit '送信' %>
+<% end %>
+</div>
+
+<h4>コメント一覧</h4>
+<% @item.reviews.each do |review|  %>
+<div class = 'reviews'>
+     <%= review.review_title %>
+     <%= review.review_text %>
+</div>
+<% end %>
