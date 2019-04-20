@@ -30,6 +30,9 @@ end
   get '/' => 'homes#top',as: "top"
 
   resources :artists, only:[:index, :create, :new, :destroy]
+  get 'artists/new_item' => 'artists#new_item'
+  get 'artists/used_item' => 'artists#used_item'
+
   resources :genre, only:[:index, :create]
   resources :lable, only:[:index, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

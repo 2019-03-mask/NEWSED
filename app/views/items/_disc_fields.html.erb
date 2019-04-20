@@ -1,7 +1,7 @@
 <h3>DISC</h3>
 <div class="songs">
 	<%= f.text_field :disc_name %>
-	<%= f.hidden_field :item_id, :value => @item_id.id + 1 %>
+	<%= link_to_remove_association "削除", f %>
 	<h3>SONG</h3>
 	<%= f.fields_for :songs do |song| %>
 	<%= render 'song_fields', f: song %>

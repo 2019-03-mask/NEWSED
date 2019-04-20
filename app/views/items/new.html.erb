@@ -6,8 +6,17 @@
 			   <h4>ジャケット写真</h4>
 
 		<%= f.attachment_field :item_image %>
+	<div class="artist">
+		<%= link_to "アーティスト追加", new_artist_path %>
+	</div>
+	<div class="genre">
+		<%= link_to "ジャンル追加", genre_index_path %>
+	</div>
+	<div class="lable">
+		<%= link_to "レーベル追加", lable_index_path %>
+	</div>
 
-				<ul class='create_cd'>
+				<ul class='create_item'>
 					<li class="item_type">
 					   <label for="item_type">シングル or アルバム</label>
 					   <%= f.select :item_type, [["シングル", "シングル"], ["アルバム", "アルバム"]], :prompt => "選択してください" %>
