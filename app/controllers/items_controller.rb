@@ -17,7 +17,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     # @item_id = Item.las
-
     # @item.discs.build
     # @item.discs[0].songs.buid
     @artists = Artist.all
