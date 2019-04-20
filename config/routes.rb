@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 end
 
   resources :contacts, only:[:create, :show, :index]
-  get 'contacts/top' => 'contacts#top'
+  get '/contacts_top' => 'contacts#top', as: 'contact_top'
 
   resources :carts, only:[:index, :show]
   get 'carts/function' => 'carts#function'

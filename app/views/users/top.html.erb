@@ -1,6 +1,9 @@
 <h1>マイページ</h1>
-
-<h2>ユーザー名 さん</h2>
+<h3>
+ <% if user_signed_in? %>
+ <%= current_user.first_name %>
+ <% end %>
+さん</h3>
 
 　　<div class="box1">購入履歴一覧</div>
 　　<div class="box2">お気に入り一覧</div>
