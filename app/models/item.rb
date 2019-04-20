@@ -1,8 +1,8 @@
 class Item < ApplicationRecord
 
-  belongs_to :artist
-  belongs_to :lable
-  belongs_to :genre
+  belongs_to :artist, required: true
+  belongs_to :lable, required: true
+  belongs_to :genre, required: true
 
   has_many :discs, dependent: :destroy
   has_many :favorites
