@@ -14,8 +14,9 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @disc = @item.discs.build
-    @song = @disc.songs.build
+    @item_id = Item.last
+    @disc = @item.discs.new
+    @song = @disc.songs.new
     @artists = Artist.all
     @genres = Genre.all
     @lables = Lable.all
@@ -26,8 +27,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-    item = Item.new
-    item.save(item_params)
+    item = Item.new(item_params)
+    item.save!
     redirect_to items_path
   end
 
