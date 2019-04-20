@@ -16,7 +16,6 @@
                 <h1>NEWSED</h1>
             <% if user_signed_in? %>
                 <li class="nav-list-item"><%= link_to " 新品一覧", items_path %></li>
-
                 <li class="nav-list-item"><%= link_to " 中古一覧", index_used_items_path %></li>
                 <li class="nav-list-item"><%= link_to " マイページ", top_users_path %></li>
                 <li class="nav-list-item"><%= link_to " ログアウト", destroy_user_session_path, method: :delete %></li>
@@ -34,7 +33,7 @@
       </nav>
     <%= yield %>
     <footer>
-      <%= link_to "お問い合わせ", contacts_path %>
+      <%= link_to "お問い合わせ", contact_top_path %>
           <p>CopyRight 2019 NEWSED All right reserved.</p>
     </footer>
   </body>
