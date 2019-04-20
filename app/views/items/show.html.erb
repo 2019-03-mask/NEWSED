@@ -8,9 +8,14 @@
 <%= @item.lable.lable_name %>
 <%= @item.genre.genre_name %>
 
-<%#ディスク名を表示する記述を作る %>
 
-<%= @songs.each do |song| %>
-<%= song.song_name %>
+<% @discs.each do |disc| %>
+<%= disc.disc_name %>
 <% end %>
-
+<% @songs.each do |song| %>
+<%= song.song_title %>
+<% end %>
+<div class="admin">
+	<%= link_to "編集", edit_item_path(@item.id) %>
+	<%= link_to "削除", item_path(@item), method: :delete, "data-confirm" => "消しちゃうの？　　消さないで！ お願い！　100円あげるから！" %>
+</div>

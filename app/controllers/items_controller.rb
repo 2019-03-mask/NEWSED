@@ -9,14 +9,17 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @songs = Song.where("disc_id = '#{@item.id}'")
+    @discs = @item.discs
+    @songs = @discs.map{|disc| disc.songs}
+    # @songs = Song.where("disc_id = '#{@item.id}'")
   end
 
   def new
     @item = Item.new
-    @item_id = Item.last
-    @disc = @item.discs.new
-    @song = @disc.songs.new
+    # @item_id = Item.las
+
+    # @item.discs.build
+    # @item.discs[0].songs.buid
     @artists = Artist.all
     @genres = Genre.all
     @lables = Lable.all
@@ -24,15 +27,25 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @artists = Artist.all
+    @genres = Genre.all
+    @lables = Lable.all
   end
 
   def create
     item = Item.new(item_params)
     item.save!
-    redirect_to items_path
+    if item.item_states == '新品'
+      redirect_to items_path
+    else
+      redirect_to index_used_items_path
+    end
   end
 
   def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to items_path
   end
 
   def status
@@ -46,6 +59,6 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:artist_id, :lable_id, :genre_id, :item_states, :item_type, :item_name, :price, :item_image, :stock, discs_attributes: [:id, :disc_name, :item_id,:_destroy, songs_attributes: [:id, :song_title, :disc_id, :_destroy]])
+    params.require(:item).permit(:item_name, :item_image_id, :item_states, :item_type, :price, :stock, :deleted_at, :artist_id, :lable_id, :genre_id, discs_attributes: [:disc_id, :disc_name, :item_id,:_destroy, songs_attributes: [:song_id, :song_title, :disc_id, :_destroy]])
   end
 end

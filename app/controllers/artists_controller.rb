@@ -1,5 +1,9 @@
 class ArtistsController < ApplicationController
-	before_action :authenticate_user!
+  def new_item
+  end
+
+  def used_item
+  end
 
   def index
   end
