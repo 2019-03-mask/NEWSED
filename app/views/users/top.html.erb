@@ -1,15 +1,16 @@
 <h1>マイページ</h1>
 <h3>
- <% if user_signed_in? %>
- <%= current_user.first_name %>
- <% end %>
+	<% if user_signed_in? %>
+	<%= current_user.first_name %>
+	<% end %>
 さん</h3>
 
 　　<div class="box1">
-	 <%= link_to "購入履歴一覧", purchase_history_users_path %> </div>
-　　<div class="box2">
-	 <%= link_to "お気に入り一覧", favorite_user_path(current_user.id) %> </div>
-　　<div class="box3">ユーザー編集 </div>
-　　<div class="box4">
-     <%= link_to "退会", delete_user_path(current_user.id) %>
-   </div>
+	<%= link_to "購入履歴一覧", purchase_history_users_path %> </div>
+	　　<div class="box2">
+		<%= link_to "お気に入り一覧", favorite_user_path(current_user.id) %> </div>
+		　　<div class="box3"><%= link_to "ユーザー編集", user_path(current_user.id) %>
+		</div>
+		　　<div class="box4">
+			<%= link_to "退会", delete_user_path(current_user.id) %>
+		</div>
