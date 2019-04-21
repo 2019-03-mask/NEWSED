@@ -2,11 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :items do
+    resources :reviews, only:[:create, :destroy]
+    resources :favorites, only:[:create, :destroy]
+
     collection do
       get :index_used
     end
-    resources :reviews, only:[:create, :destroy]
-    resources :favorites, only:[:create, :destroy]
   end
 
   resources :users do

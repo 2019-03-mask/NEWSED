@@ -6,7 +6,6 @@ class ReviewsController < ApplicationController
 	  # review.user_id = current_user.id
 	  # review.save
 	  # redirect_to item_path(item.id)
-
 	  # binding.pry
 
 	  review = Review.new(review_params)
@@ -17,6 +16,10 @@ class ReviewsController < ApplicationController
 	end
 
 	def destroy
+	  item = Item.find(params[:item_id])
+      review = current_user.reviews.find_by(item_id: item.id)
+      review.destroy
+      redirect_to item_path(item.id)
 	end
 
 	private
