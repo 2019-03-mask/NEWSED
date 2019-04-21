@@ -10,14 +10,14 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @discs = @item.discs
-    @songs = @discs.map{|disc| disc.songs}
-    # @songs = Song.where("disc_id = '#{@item.id}'")
+    #@songs = @discs.map{|disc| disc.songs}
+    #@songs = Song.where("disc_id = '#{@item.id}'")
+    @review = Review.new
   end
 
   def new
     @item = Item.new
     # @item_id = Item.las
-
     # @item.discs.build
     # @item.discs[0].songs.buid
     @artists = Artist.all
