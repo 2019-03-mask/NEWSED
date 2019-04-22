@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :purchase_histories
   has_many :reviews, dependent: :destroy
-  has_many :carts
+  has_many :carts, dependent: :destroy
 
   acts_as_paranoid
 end

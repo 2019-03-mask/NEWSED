@@ -1,2 +1,11 @@
-<h1>Carts#function</h1>
-<p>Find me in app/views/carts/function.html.erb</p>
+<h1>購入手続き</h1>
+
+
+<%= form_for(@user_delivery) do |f| %>
+<p>配送先郵便番号</p>
+<%= f.text_field :delivery_zip_code %>
+<p>配送先住所</p>
+<%= f.text_field :delivery_address %>
+<%= f.submit '次に進む' %>
+<% end %>
+
