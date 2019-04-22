@@ -1,26 +1,32 @@
 <h1>新品商品一覧</h1>
     <div class="col-lg-12">
+      <%= search_form_for @search, url: items_path do |f| %>
+      <%= f.label :アーティスト検索 %>
+      <%= f.search_field :artist_name_cont %>
+      <%= f.submit "検索" %>
+      <% end %>
       <h2>NEW CD</h2>
       <table class="table table-hover table-inverse">
-
-     <% @items.each do |item| %>
-       <tr>
-       	<td><%= attachment_image_tag item, :item_image, size: "100x100" %>
+     <% @artists.each do |a| %>
+      <% a.items.each do |item|%>
+      <tr>
+        <td><%= attachment_image_tag item, :item_image, size: "100x100" %>
         <td>
            <%= link_to item.item_name, item_path(item.id) %>
         </td>
         <td>
-          <%= link_to item.artist.artist_name, artists_path  %>
+          <%= link_to item.artist.artist_name, artist_path(item.artist.id)  %>
         </td>
         <td><%= item.price %></td>
         <td>
         <% if item.stock == 0 %>
-        <%= 'Sold Out' %>
+          <%= 'Sold Out' %>
         <% else %>
-        <%= item.stock %>
+          <%= item.stock %>
         <% end %>
         </td>
        </tr>
+      <% end %>
      <% end %>
     </table>
    </div>

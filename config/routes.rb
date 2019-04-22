@@ -34,9 +34,9 @@ end
   resources :homes, only:[:index]
   get '/' => 'homes#top',as: "top"
 
-  resources :artists, only:[:index, :create, :new, :destroy]
-  get 'artists/new_item' => 'artists#new_item'
-  get 'artists/used_item' => 'artists#used_item'
+  resources :artists, only:[:show, :create, :new, :destroy]
+  get 'artists/:id/new_item' => 'artists#new_item', as: 'artist_new_item'
+  get 'artists/:id/used_item' => 'artists#used_item', as: 'artist_used_item'
 
   resources :genre, only:[:index, :create]
   resources :lable, only:[:index, :create]

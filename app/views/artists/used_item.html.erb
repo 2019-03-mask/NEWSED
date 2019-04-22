@@ -1,0 +1,21 @@
+<h1>アーティスト中古商品</h1>
+
+    <%= attachment_image_tag @artist, :artist_image, size: "300x300" %>
+	<%= @artist.artist_name %>
+
+  <h1>USED</h1>
+
+  <div>
+   <% @items.each do |item| %>
+   <%= attachment_image_tag item, :item_image, size: "100x100" %>
+   <%= item.item_name %>
+   <%= item.artist.artist_name %>
+   <%= item.stock %>
+   <% if item.stock == 0 %>
+          <%= 'Sold Out' %>
+        <% else %>
+          <%= item.stock %>
+        <% end %>
+
+    <% end %>
+</div>

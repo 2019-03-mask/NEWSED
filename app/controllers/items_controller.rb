@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.where("item_states = '新品'")
+    @search = Artist.ransack(params[:q])
+    @artists = @search.result
   end
 
   def index_used
@@ -34,7 +36,7 @@ class ItemsController < ApplicationController
 
   def create
     item = Item.new(item_params)
-    item.save!
+    item.save
     if item.item_states == '新品'
       redirect_to items_path
     else
@@ -59,6 +61,6 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:item_name, :item_image_id, :item_states, :item_type, :price, :stock, :deleted_at, :artist_id, :lable_id, :genre_id, discs_attributes: [:disc_id, :disc_name, :item_id,:_destroy, songs_attributes: [:song_id, :song_title, :disc_id, :_destroy]])
+    params.require(:item).permit(:item_name, :item_image_id, :item_states, :item_type, :price, :stock, :deleted_at, :artist_id, :lable_id, :genre_id, discs_attributes: [:id, :disc_name, :item_id,:_destroy, songs_attributes: [:id, :song_title, :disc_id, :_destroy]])
   end
 end

@@ -12,8 +12,8 @@ class ContactsController < ApplicationController
 
   def create
   	contact = Contact.new(contact_params)
-  	user_id = current_user_id
   	contact.save
+    redirect_to items_path
   end
 
   private

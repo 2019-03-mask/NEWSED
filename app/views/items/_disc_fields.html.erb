@@ -1,8 +1,12 @@
-<h3>DISC</h3>
+<div class="nested-fields well well-compact">
+  <div class="form-group">
+  	<h3>DISC</h3>
+    <%= link_to_remove_association "削除", f %>
+  </div>
 <div class="songs">
 	<%= f.text_field :disc_name %>
-	<%= link_to_remove_association "削除", f %>
 	<h3>SONG</h3>
+	<%= link_to_remove_association "削除", f %>
 	<%= f.fields_for :songs do |song| %>
 	<%= render 'song_fields', f: song %>
 	<% end %>
