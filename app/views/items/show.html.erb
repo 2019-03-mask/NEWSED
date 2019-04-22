@@ -11,6 +11,12 @@
 <%= @item.genre.genre_name %>
 </div>
 
+<div>
+ <%= form_for @cart_disc, url: cart_add_item_path(id: @item.id) do |f| %>
+ <%= f.text_field :cart_item %>
+ <%= f.submit '購入' %>
+ <% end %>
+</div>
 
 <div>
 <% if @item.favorited_by?(current_user) %>
@@ -56,9 +62,9 @@
 <div class = 'reviews'>
      <%= review.review_title %>
      <%= review.review_text %>
-<% if user_id = current_user.id  %>
+
 	<%= link_to '削除', item_review_path(@item, current_user.reviews), method: :delete %>
-<% end %>
+
 
 </div>
 <% end %>

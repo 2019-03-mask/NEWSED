@@ -28,7 +28,13 @@ end
    get 'contacts/:id' => 'contacts#show', as: 'conta'
 
   resources :carts, only:[:index, :show]
-  get 'carts/function' => 'carts#function'
+  get '/function/:id' => 'carts#function', as: 'cart_function'
+  get '/complete' => 'carts#complete', as: 'cart_complete'
+  post '/carts/:id/add_item'  => 'carts#add_item', as: 'cart_add_item'
+  patch '/carts/:id' => 'carts#address_change'
+  post '/buy' => 'carts#buy', as: 'cart_buy'
+
+
 
 
   resources :homes, only:[:index]

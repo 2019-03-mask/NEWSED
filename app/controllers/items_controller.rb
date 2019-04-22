@@ -15,13 +15,11 @@ class ItemsController < ApplicationController
     #@songs = @discs.map{|disc| disc.songs}
     #@songs = Song.where("disc_id = '#{@item.id}'")
     @review = Review.new
+    @cart_disc = Cart.new
   end
 
   def new
     @item = Item.new
-    # @item_id = Item.las
-    # @item.discs.build
-    # @item.discs[0].songs.buid
     @artists = Artist.all
     @genres = Genre.all
     @lables = Lable.all

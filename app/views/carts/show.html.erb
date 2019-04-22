@@ -1,2 +1,30 @@
-<h1>Carts#show</h1>
-<p>Find me in app/views/carts/show.html.erb</p>
+<h1>購入確認</h1>
+
+<% @carts.each do |cart| %>
+<%= attachment_image_tag cart.item, :item_image, size: "100x100" %>
+<%= cart.item.item_name %>
+<%= cart.item.artist.artist_name %>
+<%= cart.item.price %>
+<%= cart.item.stock %>
+<% end %>
+
+<div>
+<%= @user.last_name %>
+<%= @user.first_name %>
+<p>送付先：郵便番号</p>
+<%= @user.zip_code %>
+<p>送付先：住所</p>
+<%= @user.address %>
+</div>
+
+<%= form_for @buy_item, url: cart_buy_path do |f| %>
+
+<%= f.hidden_field :cart_id, :value => '1' %>
+<%= f.hidden_field :bought_price, :value => '1' %>
+
+<%= f.submit '購入' %>
+<% end %>
+
+
+
+
