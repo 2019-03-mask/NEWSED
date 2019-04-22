@@ -43,8 +43,9 @@ class CartsController < ApplicationController
   end
 
   def buy
-    buy_item = PurchaseHistory.new
+    buy_item = PurchaseHistory.new(buy_params)
     buy_item.user_id = current_user.id
+    #binding.pry
     buy_item.save
     redirect_to cart_complete_path
   end
@@ -53,5 +54,10 @@ class CartsController < ApplicationController
   def cart_disc_params
     params.require(:cart).permit(
       :cart_item, :delivery_address, :delivery_zip_code, :user_id,:item_id)
+  end
+
+  def buy_params
+    params.require(:purchase_history).permit(
+      :cart_id, :bought_price, :user_id)
   end
 end

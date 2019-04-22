@@ -32,7 +32,7 @@ end
   get '/complete' => 'carts#complete', as: 'cart_complete'
   post '/carts/:id/add_item'  => 'carts#add_item', as: 'cart_add_item'
   patch '/carts/:id' => 'carts#address_change'
-  post '/buy/:id' => 'carts#buy', as: 'cart_buy'
+  post '/buy' => 'carts#buy', as: 'cart_buy'
 
 
 

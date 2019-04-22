@@ -17,10 +17,11 @@
 <%= @user.address %>
 </div>
 
-<%= form_for (@buy_item) do |f| %>
+<%= form_for @buy_item, url: cart_buy_path do |f| %>
 
-<%= f.hidden_field :cart_id, :value => 1 %>
-<%= f.hidden_field :item_id, :value => 1 %>
+<%= f.hidden_field :cart_id, :value => '1' %>
+<%= f.hidden_field :bought_price, :value => '1' %>
+
 <%= f.submit '購入' %>
 <% end %>
 
