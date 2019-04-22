@@ -1,0 +1,11 @@
+<h1>お気に入り一覧</h1>
+
+<div class = 'item_information'>
+	<% @favorites.each do |favorite| %>
+	<%= attachment_image_tag favorite.item, :item_image, size: '100x100' %>
+	<%= favorite.item.item_name %>
+	<%= favorite.item.artist.artist_name %>
+	<%= favorite.item.price %>
+	<%= favorite.item.item_states %>
+	<% end %>
+</div>

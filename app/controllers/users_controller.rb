@@ -9,7 +9,8 @@ class UsersController < ApplicationController
   def purchase_history
   end
 
-  def favorite
+  def favorites
+    @favorites = current_user.favorites
   end
 
   def delete

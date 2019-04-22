@@ -12,11 +12,11 @@ Rails.application.routes.draw do
 
   resources :users do
     collection do
+      get :favorites
       get :top
       get :purchase_history
     end
     member do
-      get :favorite
       post :favorite
       get :delete
       post :delete
@@ -25,6 +25,7 @@ end
 
   resources :contacts, only:[:create, :show, :index]
   get '/contacts_top' => 'contacts#top', as: 'contact_top'
+   get 'contacts/:id' => 'contacts#show', as: 'conta'
 
   resources :carts, only:[:index, :show]
   get 'carts/function' => 'carts#function'
