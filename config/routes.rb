@@ -20,8 +20,10 @@ Rails.application.routes.draw do
       post :favorite
       get :delete
       post :delete
+    end
   end
-end
+
+  get '/admin/users/:id/edit' => 'users#admin_edit', as: 'admin_edit'
 
   resources :contacts, only:[:create, :show, :index]
   get '/contacts_top' => 'contacts#top', as: 'contact_top'
@@ -32,9 +34,6 @@ end
   post '/carts/:id/add_item'  => 'carts#add_item', as: 'cart_add_item'
   patch '/carts/:id' => 'carts#address_change'
   post '/buy' => 'carts#buy', as: 'cart_buy'
-
-
-
 
   resources :homes, only:[:index]
   get '/' => 'homes#top',as: "top"
