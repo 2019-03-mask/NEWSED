@@ -1,14 +1,22 @@
-<h1>新品商品一覧</h1>
-    <div class="col-lg-12">
+<div class="header-box">
+  <h1 class="new-header">N E W&nbsp;&nbsp;C D</h1>
+</div>
+<div class="main-box">
+  <div class="search-artist">
       <%= search_form_for @search, url: items_path do |f| %>
-      <%= f.label :アーティスト検索 %>
-      <%= f.search_field :artist_name_cont %>
+      <%= f.label :商品検索 %>
+      <%= f.search_field :item_name_cont %>
       <%= f.submit "検索" %>
       <% end %>
-      <h2>NEW CD</h2>
+  </div>
+  <% @rank.each do |rank| %>
+  <div class="rank">
+    <%= rank.item_name %>
+  </div>
+  <% end %>
+  <div class="show-box">
       <table class="table table-hover table-inverse">
-     <% @artists.each do |a| %>
-      <% a.items.each do |item|%>
+      <% @items.each do |item|%>
       <tr>
         <td><%= attachment_image_tag item, :item_image, size: "100x100" %>
         <td>
@@ -27,6 +35,9 @@
         </td>
        </tr>
       <% end %>
-     <% end %>
-    </table>
-   </div>
+      </table>
+      <%= paginate @items, class: "paginate" %>
+  </div>
+</div>
+
+

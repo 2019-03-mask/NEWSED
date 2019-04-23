@@ -1,19 +1,31 @@
 class ItemsController < ApplicationController
+  PER = 5
   def index
-    @items = Item.where("item_states = '新品'")
-    @search = Artist.ransack(params[:q])
-    @artists = @search.result
+     @search = Item.where("item_states = '新品'").ransack(params[:q])
+    if params[:q].present?
+      @items = @search.result.page(params[:page]).per(PER).reverse_order
+    else
+      @items = Item.where("item_states = '新品'").page(params[:page]).per(PER).reverse_order
+    end
+    @rank = Item.find(Favorite.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
   end
 
   def index_used
-    @items = Item.where("item_states = '中古'")
+         @search = Item.where("item_states = '中古'").ransack(params[:q])
+    if params[:q].present?
+      @items = @search.result.page(params[:page]).per(PER).reverse_order
+    else
+      @items = Item.where("item_states = '中古'").page(params[:page]).per(PER).reverse_order
+    end
+    @rank = Item.find(Favorite.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
   end
 
   def show
     @item = Item.find(params[:id])
-    @discs = @item.discs
+    # @discs = @item.discs
     #@songs = @discs.map{|disc| disc.songs}
     #@songs = Song.where("disc_id = '#{@item.id}'")
+    # @user = User.find(params[:id])
     @review = Review.new
     @cart_disc = Cart.new
   end

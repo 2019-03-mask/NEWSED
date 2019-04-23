@@ -25,7 +25,6 @@ end
 
   resources :contacts, only:[:create, :show, :index]
   get '/contacts_top' => 'contacts#top', as: 'contact_top'
-   get 'contacts/:id' => 'contacts#show', as: 'conta'
 
   resources :carts, only:[:index, :show]
   get '/function/:id' => 'carts#function', as: 'cart_function'
