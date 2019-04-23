@@ -6,6 +6,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def admin_edit
+    @user = User.find(params[:id])
+  end
+
+  def admin_update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to top_path
+  end
+
   def purchase_history
   end
 
@@ -14,7 +24,9 @@ class UsersController < ApplicationController
   end
 
   def delete
-    @user = current_user
+    user = current_user
+    user.destroy
+    redirect_to top_path
   end
 
   def index
@@ -24,8 +36,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
   end
-
 
   def update
     @user = User.find(params[:id])
@@ -33,8 +45,10 @@ class UsersController < ApplicationController
     redirect_to top_path
   end
 
-
   def destroy
+    user = User.find(params[:id])
+    user.destroy
+    redirect_to users_path
   end
 
   private

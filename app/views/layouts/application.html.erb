@@ -19,7 +19,7 @@
                 <li class="nav-list-item"><%= link_to " 中古一覧", index_used_items_path %></li>
                 <li class="nav-list-item"><%= link_to " マイページ", top_users_path %></li>
                 <li class="nav-list-item"><%= link_to " ログアウト", destroy_user_session_path, method: :delete %></li>
-                  <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
+
                 <% else %>
                 <li class="nav-list-item"><%= link_to " 新品一覧", items_path %></li>
                 <li class="nav-list-item"><%= link_to " 中古一覧", index_used_items_path %></li>
