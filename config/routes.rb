@@ -33,7 +33,10 @@ Rails.application.routes.draw do
   get '/complete' => 'carts#complete', as: 'cart_complete'
   post '/carts/:id/add_item'  => 'carts#add_item', as: 'cart_add_item'
   patch '/carts/:id' => 'carts#address_change'
-  post '/buy' => 'carts#buy', as: 'cart_buy'
+  post '/buy' => 'carts#buy', as: 'purchase_histories'
+  patch '/carts/:id/update' => 'carts#update', as: 'cart_update'
+  delete '/carts/:id/destroy' => 'carts#delete', as: 'cart_delete'
+
 
   resources :homes, only:[:index]
   get '/' => 'homes#top',as: "top"

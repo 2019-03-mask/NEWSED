@@ -5,4 +5,5 @@ class Cart < ApplicationRecord
 	has_many :purchase_histories
 	has_one :delivery, dependent: :delete
 
+    acts_as_paranoid
 end

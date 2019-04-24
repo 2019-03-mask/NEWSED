@@ -5,9 +5,12 @@
 <%= cart.item.item_name %>
 <%= cart.item.artist.artist_name %>
 <%= cart.item.price %>
-<%= cart.item.stock %>
 <% end %>
 
+
+
+<%# カートモデルの配送先情報を出したい
+　　・現在はユーザーモデルの住所を表示している状態　%>
 <div>
 <%= @user.last_name %>
 <%= @user.first_name %>
@@ -17,13 +20,10 @@
 <%= @user.address %>
 </div>
 
-<%= form_for @buy_item, url: cart_buy_path do |f| %>
 
-<%= f.hidden_field :cart_id, :value => '1' %>
-<%= f.hidden_field :bought_price, :value => '1' %>
 
-<%= f.submit '購入' %>
-<% end %>
+<%# 購入処理 %>
+<%= link_to '購入', purchase_histories_path, method: :post %>
 
 
 

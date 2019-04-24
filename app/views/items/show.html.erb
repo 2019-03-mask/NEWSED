@@ -18,10 +18,12 @@
 
 </div>
 
+
+<%# 商品をカートに入れる %>
 <div>
  <%= form_for @cart_disc, url: cart_add_item_path(id: @item.id) do |f| %>
- <%= f.text_field :cart_item %>
- <%= f.submit '購入' %>
+ <%= f.select :cart_item, [1,2,3,4,5,6,7,8,9,10] %>
+ <%= f.submit 'カートに入れる' %>
  <% end %>
 </div>
 

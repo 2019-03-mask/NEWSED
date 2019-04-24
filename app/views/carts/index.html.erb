@@ -1,8 +1,49 @@
-<h1>Carts#index</h1>
+<h1>カート内一覧</h1>
 
 
-<% @cart_disc.each do |cart| %>
-<%= cart.item.item_name  %>
+
+<div>
+
+<% sum = 0 %>
+<% @carts.each do |cart| %>
+
+	<div>
+	  <%= attachment_image_tag cart.item, :item_image, size: "100x100" %>
+	</div>
+
+	<div>
+	  <%= cart.item.item_name %>
+	</div>
+
+	<div>
+	  <%= cart.item.artist.artist_name %>
+	</div>
+
+	<div>
+	  <%= cart.item.price %>
+	  <%= cart.cart_item %>
+	</div>
+
+	<div>
+	 <%= form_for cart, url: cart_update_path(cart.id) do |f| %>
+		<%= f.select :cart_item, [1,2,3,4,5,6,7,8,9,10] %>
+		<%= f.submit '変更' %>
+	<% end %>
+	</div>
+
+	<div>
+	  <%= link_to '商品を削除', cart_delete_path(cart.id), method: :delete %>
+	</div>
+	<% a = cart.item.price*cart.cart_item %>
+	<% sum += a %>
+
 <% end %>
+<p>合計金額</p>
+<%= sum %>円
+</div>
+
+
+
+
 
 <%= link_to "購入手続きへ", cart_function_path(current_user) %>
