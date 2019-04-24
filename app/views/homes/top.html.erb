@@ -1,15 +1,63 @@
-	<div class="header"></div>
+<div class="header"></div>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/skippr.css"> <!-- skipprのcssファイルを読み込む！ -->
+	<link rel="stylesheet" href="css/style.css"> <!-- style.cssを読み込む！ -->
+</head>
+<body>
+	<div class="container">
+		<p>NEWSED</p>
+		<div class="theTarget">
+			<%= image_tag("img/test1.jpg") %>
+			<%= image_tag("img/test2.jpg") %>
+			<%= image_tag("img/test3.jpg") %>
+			<%= image_tag("img/test4.jpg") %>
+		</div>
+	</div>
 
-	<div class="main-visual">
-<h2>NEWSED(トップ画面)</h2>
-    </div>
-    <div class="main">
-    	<h2>NEWSED(NEW+USED)とは・・・
-    		<p>新品の音楽ディスクと中古のディスクの販売をしています。<br>
-                品質を求める方には新品を、安さを求める方には中古を安い価格で。
-                それぞれのニーズに合わせた商品を取り扱っています。<p>
-    </div>
-    <div class="main-low">
-    	<%= link_to " 新品CD一覧", items_path %>
-    	<%= link_to " 中古CD一覧", index_used_items_path %>
-    <div class="footer"></div>
+<div class="main">
+	<h2>NEWSED(NEW+USED)とは・・・</h2>
+	<p>新品の音楽ディスクと中古のディスクの販売をしています。<br>
+		品質を求める方には新品を、安さを求める方には中古を安い価格で。
+	それぞれのニーズに合わせた商品を取り扱っています。</p>
+</div>
+</body>
+</html>
+
+<div class="main-low">
+	<%= link_to " 新品CD一覧", items_path %>
+	<%= link_to " 中古CD一覧", index_used_items_path %>
+</div>
+<div class="footer"></div>
+
+<script>
+	$("document").ready(function() {
+    $(".theTarget").skippr();
+});
+
+// オプションを指定してSkipprの実行
+$(".theTarget").skippr({
+    // スライドショーの変化 ("fade" or "slide")
+    transition : 'fade',
+    // 変化に係る時間(ミリ秒)
+    speed : 2000,
+    // easingの種類
+    easing : 'easeOutQuart',
+    // ナビゲーションの形("block" or "bubble")
+    navType : 'block',
+    // 子要素の種類("div" or "img")
+    childrenElementType : 'div',
+    // ナビゲーション矢印の表示(trueで表示)
+    arrows : true,
+    // スライドショーの自動再生(falseで自動再生なし)
+    autoPlay : true,
+    // 自動再生時のスライド切替間隔(ミリ秒)
+    autoPlayDuration : 3000,
+    // キーボードの矢印キーによるスライド送りの設定(trueで有効)
+    keyboardOnAlways : true,
+    // 一枚目のスライド表示時に戻る矢印を表示するかどうか(falseで非表示)
+    hidePrevious : false
+});
+</script>

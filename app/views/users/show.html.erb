@@ -4,7 +4,7 @@
 <div class = 'user_information'>
 	<%= @user.last_name %>
 	<%= @user.first_name %>
-    <%= @user.last_name_kana %>
+	<%= @user.last_name_kana %>
 	<%= @user.first_name_kana %>
 	<%= @user.zip_code %>
 	<%= @user.address %>
@@ -12,5 +12,9 @@
 	<%= @user.email %>
 </div>
 
-	<%= link_to "編集", admin_edit_path(@user.id) %>
-	<%= link_to "削除", user_path(@user.id), method: :delete, "data-confirm" => "消しちゃうの？　　消さないで！ お願い！　100円あげるから！" %>
+<%= link_to "編集", admin_edit_path(@user.id) %>
+<%= link_to "削除", user_path(@user.id), method: :delete, "data-confirm" => "消しちゃうの？　　消さないで！ お願い！　100円あげるから！" %>
+
+<div class = "user_purchase_history">
+	<h3>購入履歴一覧</h3>
+</div>
