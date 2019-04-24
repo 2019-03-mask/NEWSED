@@ -8,21 +8,41 @@
 </head>
 <body>
 	<div class="container">
-		<p>NEWSED</p>
-		<div class="theTarget">
-			<%= image_tag("img/test1.jpg") %>
-			<%= image_tag("img/test2.jpg") %>
-			<%= image_tag("img/test3.jpg") %>
-			<%= image_tag("img/test4.jpg") %>
-		</div>
-	</div>
+		<p class="neon">NEWSED</p>
+        <div class="theTarget">
+         <%= image_tag("img/test1.jpg") %>
+         <%= image_tag("img/test2.jpg") %>
+         <%= image_tag("img/test3.jpg") %>
+         <%= image_tag("img/test4.jpg") %>
+        </div>
+    </div>
 
-<div class="main">
-	<h2>NEWSED(NEW+USED)とは・・・</h2>
-	<p>新品の音楽ディスクと中古のディスクの販売をしています。<br>
-		品質を求める方には新品を、安さを求める方には中古を安い価格で。
-	それぞれのニーズに合わせた商品を取り扱っています。</p>
-</div>
+    <div class="main">
+        <div class="line-bc"><!--①LINE会話全体を囲う-->
+        <!--②左コメント始-->
+            <div class="balloon6">
+                <div class="faceicon">
+                <%= image_tag("img/line2.png") %>
+                </div>
+                <div class="chatting">
+                    <div class="says">
+                        <p>NEWSEDってなに？</p>
+                    </div>
+                </div>
+            </div>
+    <!--②/左コメント終-->
+
+    <!--③右コメント始-->
+        <div class="mycomment">
+            <p>NEWSEDとは・・(NEW+USED)の略で、
+            新品と中古のディスク販売をしています！
+            </p>
+
+            <p>品質を求める方、安さを求める方、それぞれのニーズに合わせた商品を取り扱っています。</p>
+        </div>
+    <!--/③右コメント終-->
+        </div><!--/①LINE会話終了-->
+    </div>
 </body>
 </html>
 
@@ -34,8 +54,8 @@
 
 <script>
 	$("document").ready(function() {
-    $(".theTarget").skippr();
-});
+        $(".theTarget").skippr();
+    });
 
 // オプションを指定してSkipprの実行
 $(".theTarget").skippr({
