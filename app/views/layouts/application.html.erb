@@ -13,12 +13,12 @@
     <header>
 
               <ul class="nav-list">
-                <h1 class = "title-newsed">NEWSED</h1>
+                <h1 class="neon-header">NEWSED</h1>
             <% if user_signed_in? %>
-                <li class="nav-list-item"><%= link_to " 新品一覧", items_path %></li>
-                <li class="nav-list-item"><%= link_to " 中古一覧", index_used_items_path %></li>
-                <li class="nav-list-item"><%= link_to " マイページ", top_users_path %></li>
-                <li class="nav-list-item"><%= link_to " ログアウト", destroy_user_session_path, method: :delete %></li>
+                <li class="nav-list-item neon"><%= link_to " 新品一覧", items_path %></li>
+                <li class="nav-list-item neon"><%= link_to " 中古一覧", index_used_items_path %></li>
+                <li class="nav-list-item neon"><%= link_to " マイページ", top_users_path %></li>
+                <li class="nav-list-item neon"><%= link_to " ログアウト", destroy_user_session_path, method: :delete %></li>
 
                 <% else %>
                 <li class="nav-list-item"><%= link_to " 新品一覧", items_path %></li>
