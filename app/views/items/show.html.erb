@@ -1,82 +1,85 @@
 <h1>商品詳細</h1>
-<h2>[CD<%= @item.item_type %>]</h2>
+   <h2>[CD<%= @item.item_type %>]</h2>
 
-<div class = 'item_information'>
-<%= @item.item_states %>
-<%= @item.item_name %>
-<%= attachment_image_tag @item, :item_image, size: '100x100' %>
-<%= @item.artist.artist_name %>
-<%= @item.price %>
-<%= @item.lable.lable_name %>
-<%= @item.genre.genre_name %>
-<% @item.discs.each do |disc| %>
-  <%= disc.disc_name %>
-    <% disc.songs.each do |song| %>
-      <%= song.song_title %>
-    <% end %>
-<% end %>
-
-</div>
+     <div class = 'item_information'>
+       <%= @item.item_states %>
+       <%= @item.item_name %>
+       <%= attachment_image_tag @item, :item_image, size: '100x100' %>
+       <%= @item.artist.artist_name %>
+       <%= @item.price %>
+       <%= @item.lable.lable_name %>
+       <%= @item.genre.genre_name %>
+          <% @item.discs.each do |disc| %>
+             <%= disc.disc_name %>
+               <% disc.songs.each do |song| %>
+                <%= song.song_title %>
+               <% end %>
+             <% end %>
+     </div>
 
 
 <%# 商品をカートに入れる %>
-<div>
- <%= form_for @cart_disc, url: cart_add_item_path(id: @item.id) do |f| %>
- <%= f.select :cart_item, [1,2,3,4,5,6,7,8,9,10] %>
- <%= f.submit 'カートに入れる' %>
- <% end %>
-</div>
-
-<div>
-<% if @item.favorited_by?(current_user) %>
-  <li>
-    <%= link_to item_favorite_path(@item, current_user.favorites), method: :delete do %>
-      <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-      <%= @item.favorites.count %> いいね
-    <% end %>
-  </li>
-<% else %>
-  <li>
-    <%= link_to item_favorites_path(@item), method: :post do %>
-      <i class="fa fa-heart-o" aria-hidden="true" ></i>
-      <%= @item.favorites.count %> いいね
-    <% end %>
-  </li>
-<% end %>
-</div>
-
-
-<div class="admin">
-	<%= link_to "編集", edit_item_path(@item.id) %>
-	<%= link_to "削除", item_path(@item), method: :delete, "data-confirm" => "消しちゃうの？　　消さないで！ お願い！　100円あげるから！" %>
-</div>
-
-
-<%= form_for @review, url: item_reviews_path(item_id: @item.id) do |f| %>
-<div class = 'review'>
-　 <div>
-     <p>コメントタイトル</p>
-      <%= f.text_field :review_title %>
-   </div>
+<% if current_user.present? %>
    <div>
-    <p>コメント本文</p>
-     <%= f.text_area :review_text %>
+     <%= form_for @cart_disc, url: cart_add_item_path(id: @item.id) do |f| %>
+        <%= f.select :cart_item, [1,2,3,4,5,6,7,8,9,10] %>
+        <%= f.submit 'カートに入れる' %>
+     <% end %>
    </div>
-<%= f.submit '送信' %>
+  <div>
+    <% if @item.favorited_by?(current_user) %>
+      <li>
+         <%= link_to item_favorite_path(@item, current_user.favorites), method: :delete do %>
+           <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+             <%= @item.favorites.count %> いいね
+    <% end %>
+      </li>
+  <% else %>
+      <li>
+         <%= link_to item_favorites_path(@item), method: :post do %>
+           <i class="fa fa-heart-o" aria-hidden="true" ></i>
+             <%= @item.favorites.count %> いいね
+    <% end %>
+     </li>
+  <% end %>
+ </div>
 <% end %>
-</div>
+
+<% if current_user.admin == true %>
+    <div class="admin">
+	    <%= link_to "編集", edit_item_path(@item.id) %>
+	    <%= link_to "削除", item_path(@item), method: :delete, "data-confirm" => "消しちゃうの？　　消さないで！ お願い！　100円あげるから！" %>
+    </div>
+<% end %>
+
+
+<% if current_user.present? %>
+     <%= form_for @review, url: item_reviews_path(item_id: @item.id) do |f| %>
+       <div class = 'review'>
+　       <div>
+           <p>コメントタイトル</p>
+            <%= f.text_field :review_title %>
+        </div>
+        <div>
+           <p>コメント本文</p>
+            <%= f.text_area :review_text %>
+        </div>
+           <%= f.submit '送信' %>
+     <% end %>
+      </div>
+<% end %>
+
 
 <h4>コメント一覧</h4>
-<% @item.reviews.each do |review|  %>
-<div class = 'reviews'>
-     <%= review.review_title %>
-     <%= review.review_text %>
-  <% if review.user_id == current_user.id %>
-	 <%= link_to '削除', item_review_path(@item, current_user.reviews), method: :delete %>
-  <% end %>
-
-</div>
-<% end %>
+   <% @item.reviews.each do |review|  %>
+      <div class = 'reviews'>
+         <%= review.review_title %>
+         <%= review.review_text %>
+       <% if review.user_id == current_user.id %>
+	       <%= link_to '削除', item_review_path(@item, current_user.reviews), method: :delete %>
+       <% end %>
+      </div>
+   <% end %>
 
 
 

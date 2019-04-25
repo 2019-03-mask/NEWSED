@@ -30,6 +30,12 @@
                </ul>
 
     </header>
+　　　　<% if flash[:notice]%>
+          <div class="flash">
+            <%= flash[:notice]%>
+          </div>
+      <% end %>
+
     <%= yield %>
     <footer>
       <P class="contact-text"><%= link_to "お問い合わせ", contact_top_path %></P>

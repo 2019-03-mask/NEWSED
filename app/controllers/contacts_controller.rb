@@ -1,4 +1,9 @@
 class ContactsController < ApplicationController
+
+before_action :authenticate_user!, only: [:top, :create, :show, :index]
+before_action :ensure_correct_user, only:[:show, :index]
+
+
   def top
   	@contact = Contact.new
   end
@@ -8,7 +13,7 @@ class ContactsController < ApplicationController
   end
 
   def index
-      @contacts = Contact.all
+    @contacts = Contact.all
   end
 
   def create
@@ -18,8 +23,14 @@ class ContactsController < ApplicationController
     redirect_to top_users_path
   end
 
-  private
+  def ensure_correct_user
+    if current_user.admin == false
+      flash[:notice] = "このアクションは許可されていません"
+      redirect_to top_users_path
+    end
+  end
 
+  private
   def contact_params
   	params.require(:contact).permit(:contact_title, :contact_text)
   end
