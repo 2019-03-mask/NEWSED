@@ -5,5 +5,7 @@ class Disc < ApplicationRecord
 
   accepts_nested_attributes_for :songs, reject_if: :all_blank, allow_destroy: true
 
+  validates :disc_name, presence: true
+
 
 end

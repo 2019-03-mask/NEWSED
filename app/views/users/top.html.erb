@@ -1,15 +1,26 @@
+
+
+
+<div class="top-text">
+
 <h2>
 	<% if user_signed_in? %>
 	<%= current_user.first_name %>
 	<% end %>
-さん</h2>
+さん
+</h2>
 
-　　<div class="box1">
-	<%= link_to "購入履歴一覧", purchase_history_users_path %> </div>
-	　　<div class="box2">
-		<%= link_to "お気に入り一覧", favorite_user_path(current_user.id) %> </div>
-		　　<div class="box3"><%= link_to "ユーザー編集", user_path(current_user.id) %>
-		</div>
-		　　<div class="box4">
-			<%= link_to "退会", delete_user_path(current_user.id) %>
-		</div>
+　　 <div class="box1">
+	     <p class="purchase_history_users"><%= link_to "購入履歴一覧", purchase_history_users_path %></p>
+	</div>
+	<div class="box2">
+		<p class="favorites_users"><%= link_to "お気に入り一覧", favorites_users_path %></p>
+	</div>
+    <div class="box3">
+    	<p class="user-edit"><%= link_to "ユーザー編集", user_path(current_user.id) %></p>
+	</div>
+	<div class="box4">
+		<p class="delete_user"><%= link_to "退会", delete_user_path(current_user.id) %></p>
+	</div>
+
+</div>

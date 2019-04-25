@@ -1,6 +1,10 @@
 <h1>問い合わせ一覧</h1>
- <% @contacts.each do |contact| %>
-    <p>タイトル</p>
-    <span><%= contact_text%></span>
-    <%= button_to "詳細", user_path(current_user.id), method: :get, class: 'btn btn-default' %>
- <% end %>
+
+
+	 <% @contacts.each do |contact| %>
+    <div class="contact-box">
+	    <span>タイトル : <%= contact.contact_title %></span>
+	    <span>内容 : <%= contact.contact_text %></span>
+	    <span><%= link_to "詳細", contact_path(contact.id) %></span>
+	 <% end %>
+    </div>

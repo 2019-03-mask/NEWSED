@@ -1,43 +1,51 @@
 <div class="header-box">
-  <h1 class="new-header">N E W&nbsp;&nbsp;C D</h1>
+      <div class="header-box-box">
+      <p class="new-header">N &nbsp;E &nbsp;W&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C &nbsp;&nbsp;D</p>
+      </div>
 </div>
-<div class="main-box">
-  <div class="search-artist">
-      <%= search_form_for @search, url: items_path do |f| %>
-      <%= f.label :商品検索 %>
-      <%= f.search_field :item_name_cont %>
-      <%= f.submit "検索" %>
-      <% end %>
-  </div>
-  <% @rank.each do |rank| %>
-  <div class="rank">
-    <%= rank.item_name %>
-  </div>
-  <% end %>
-  <div class="show-box">
-      <table class="table table-hover table-inverse">
-      <% @items.each do |item|%>
-      <tr>
-        <td><%= attachment_image_tag item, :item_image, size: "100x100" %>
-        <td>
-           <%= link_to item.item_name, item_path(item.id) %>
-        </td>
-        <td>
-          <%= link_to item.artist.artist_name, artist_path(item.artist.id)  %>
-        </td>
-        <td><%= item.price %></td>
-        <td>
-        <% if item.stock == 0 %>
-          <%= 'Sold Out' %>
-        <% else %>
-          <%= item.stock %>
+  <div class="row clearfix">
+      <div class="search-artist">
+          <%= search_form_for @search, url: items_path do |f| %>
+          <%= f.label :商品検索 %>
+          <%= f.search_field :item_name_cont %>
+          <%= f.submit "検索" %>
+          <% end %>
+      </div>
+      <div class="col-lg-3">
+        <% @rank.each.with_index(1) do |rank, i| %>
+        <div class="rank">
+          <h3 class="ranking"><%= "第#{i}位" %></h3>
+          <%= rank.item_name %>
+        </div>
         <% end %>
-        </td>
-       </tr>
-      <% end %>
-      </table>
-      <%= paginate @items, class: "paginate" %>
+      </div>
+      <div class="col-lg-9">
+            <% @items.each do |item|%>
+            <div class="item-list">
+              <div class="item-image">
+                 <%= attachment_image_tag item, :item_image, size: "100x100", fallback: "no_image.jpg" %>
+              </div>
+              <div class="item-name">
+                 <p><%= link_to item.item_name, item_path(item.id) %></p>
+              </div>
+              <div class="artist-name">
+                 <p><%= link_to item.artist.artist_name, artist_path(item.artist.id) %></p>
+              </div>
+              <div class="item-price">
+                <p> ¥ <%= item.price %></p>
+              </div>
+              <div class="item-stock">
+                  <% if item.stock == 0 %>
+                    <%= 'Sold Out!!' %>
+                  <% end %>
+              </div>
+            </div>
+
+              <% end %>
+      </div>
+      <div class="paginate">
+            <%= paginate @items, class: "paginate" %>
+      </div>
   </div>
-</div>
 
 

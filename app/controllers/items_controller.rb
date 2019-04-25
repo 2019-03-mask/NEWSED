@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  PER = 5
+  PER = 12
   def index
      @search = Item.where("item_states = '新品'").ransack(params[:q])
     if params[:q].present?
@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
   end
 
   def index_used
-         @search = Item.where("item_states = '中古'").ransack(params[:q])
+      @search = Item.where("item_states = '中古'").ransack(params[:q])
     if params[:q].present?
       @items = @search.result.page(params[:page]).per(PER).reverse_order
     else
@@ -71,6 +71,6 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:item_name, :item_image_id, :item_states, :item_type, :price, :stock, :deleted_at, :artist_id, :lable_id, :genre_id, discs_attributes: [:id, :disc_name, :item_id,:_destroy, songs_attributes: [:id, :song_title, :disc_id, :_destroy]])
+    params.require(:item).permit(:item_name, :item_image, :item_states, :item_type, :price, :stock, :deleted_at, :artist_id, :lable_id, :genre_id, discs_attributes: [:id, :disc_name, :item_id,:_destroy, songs_attributes: [:id, :song_title, :disc_id, :_destroy]])
   end
 end
