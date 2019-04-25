@@ -1,28 +1,24 @@
 <h1>購入確認</h1>
 
 <% @carts.each do |cart| %>
-<%= attachment_image_tag cart.item, :item_image, size: "100x100" %>
-<%= cart.item.item_name %>
-<%= cart.item.artist.artist_name %>
-<%= cart.item.price %>
+　<%= attachment_image_tag cart.item, :item_image, size: "100x100" %>
+　<%= cart.item.item_name %>
+　<%= cart.item.artist.artist_name %>
+　<%= cart.item.price %>
 <% end %>
 
 
-
-<%# カートモデルの配送先情報を出したい
-　　・現在はユーザーモデルの住所を表示している状態　%>
 <div>
-<%= @user.last_name %>
-<%= @user.first_name %>
-<p>送付先：郵便番号</p>
-<%= @user.zip_code %>
-<p>送付先：住所</p>
-<%= @user.address %>
+　<%= @user.last_name %>
+　<%= @user.first_name %>
+　　<p>送付先：郵便番号</p>
+　　　<%= @carts.last.delivery_zip_code %>
+　　<p>送付先：住所</p>
+　　　<%= @carts.last.delivery_address %>
 </div>
 
 
 
-<%# 購入処理 %>
 <%= link_to '購入', purchase_histories_path, method: :post %>
 
 
