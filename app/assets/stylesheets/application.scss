@@ -16,7 +16,13 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-ul{
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav-list{
 	text-align: right;
 }
 
@@ -26,6 +32,13 @@ ul{
   color: white;
   margin: 0 40px;
   font-size: 15px;
+}
+
+.user_first_name{
+  font-size: 20px;
+  color: white;
+  float: right;
+  margin: 0 50px;
 }
 
 .nav-list-item a{
@@ -78,7 +91,7 @@ ul{
   content: "";
   display: inline-block;
   position: absolute;
-  top: 3px; 
+  top: 3px;
   left: -19px;
   border: 8px solid transparent;
   border-right: 18px solid #edf1ee;
@@ -115,15 +128,9 @@ ul{
   transform: rotate(-35deg);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 header {
   width: 100%;
-  height: 80px;
+  height: 100px;
   background-color: black;
 }
 
