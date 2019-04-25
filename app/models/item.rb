@@ -17,4 +17,11 @@ class Item < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
+  validates :item_name, presence: true
+  validates :item_image, presence: true
+  validates :item_states, presence: true
+  validates :item_type, presence: true
+  validates :price, presence: true
+  validates :stock, presence: true
+
 end

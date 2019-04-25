@@ -5,5 +5,6 @@ class Artist < ApplicationRecord
   attachment :artist_image
 
   validates :artist_name, presence: true
+  validates :artist_image, presence: true
 
 end

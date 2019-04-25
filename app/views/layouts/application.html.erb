@@ -12,29 +12,28 @@
   <body>
     <header>
 
-              <ul class="nav-list">
-                <h1 class="neon-header">NEWSED</h1>
-            <% if user_signed_in? %>
-                <li class="nav-list-item neon"><%= link_to " 新品一覧", items_path %></li>
-                <li class="nav-list-item neon"><%= link_to " 中古一覧", index_used_items_path %></li>
-                <li class="nav-list-item neon"><%= link_to " マイページ", top_users_path %></li>
-                <li class="nav-list-item neon"><%= link_to " ログアウト", destroy_user_session_path, method: :delete %></li>
+            <p class = "title-newsed"><%= link_to "NEWSED", top_path, :style=>"color:white;" %></p>
 
+              <ul class="nav-list">
+
+            <% if user_signed_in? %>
+                <li class="nav-list-item"><%= link_to " 新品一覧", items_path, :style=>"color:white;" %></li>
+                <li class="nav-list-item"><%= link_to " 中古一覧", index_used_items_path, :style=>"color:white;" %></li>
+                <li class="nav-list-item"><%= link_to " マイページ", top_users_path, :style=>"color:white;" %></li>
+                <li class="nav-list-item"><%= link_to " ログアウト", destroy_user_session_path, method: :delete, :style=>"color:white;" %></li>
                 <% else %>
-                <li class="nav-list-item"><%= link_to " 新品一覧", items_path %></li>
-                <li class="nav-list-item"><%= link_to " 中古一覧", index_used_items_path %></li>
-                <li class="nav-list-item"><%= link_to " 会員登録", new_user_registration_path %></li>
-                <li class="nav-list-item"><%= link_to " ログイン", new_user_session_path %></li>
+                <li class="nav-list-item"><%= link_to " 新品一覧", items_path, :style=>"color:white;" %></li>
+                <li class="nav-list-item"><%= link_to " 中古一覧", index_used_items_path, :style=>"color:white;" %></li>
+                <li class="nav-list-item"><%= link_to " 会員登録", new_user_registration_path, :style=>"color:white;" %></li>
+                <li class="nav-list-item"><%= link_to " ログイン", new_user_session_path, :style=>"color:white;" %></li>
                 <% end %>
                </ul>
 
     </header>
-        </div>
-      </nav>
     <%= yield %>
     <footer>
-      <%= link_to "お問い合わせ", contact_top_path %>
-          <p>CopyRight 2019 NEWSED All right reserved.</p>
+      <P class="contact-text"><%= link_to "お問い合わせ", contact_top_path %></P>
+          <p class="foter-text">CopyRight 2019 NEWSED All right reserved.</p>
     </footer>
   </body>
 </html>

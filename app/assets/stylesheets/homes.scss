@@ -2,41 +2,68 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.container{
+
+.main-high{
     height: 700px;
-    position: relative;
-    margin-bottom: 20px;
+    width: 100%;
+    color: #fff;
+  font-size:40px;
+  font-weight:bold;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
 }
 
-.container p {
-  color: white;
+.neon {
   z-index: 9999;
   position: absolute;
   top: 350px;
-  left: 38%;
-  margin: 0 auto;
+  left: 28%;
   font-size: 100px;
-  font-family: "neoneon"
-
-  }
+  font-family: "neoneon";
+}
 
 .main {
   width: 100%;
   height: 300px;
 }
 
-
-.main-low {
+.main-box{
   width: 100%;
-  height: 100px;
+  height: 500px;
+  background-image:url(img/audience-1835431_1280.jpg);
+  background-position: center;
+  background-size: cover;
 }
 
-
-.description{
-	text-align: center;
-	font-size: 30px;
+.description-text{
+  color: white;
+  text-align: center;
+  padding-top: 150px;
+  line-height: 40px;
+  font-size: 20px;
+  font-family: Verdana;
 }
 
-.theTarget{
+.clearfix::after{
+  content: "";
+  display: block;
+  clear: both;
+}
 
+.main-low{
+  width: 100%;
+  height: 400px;
+}
+.new-index{
+  width: 50%;
+  height: 400px;
+  float: left;
+  text-align: center;
+  line-height: 400px;
+}
+.used-index{
+  width: 50%;
+  height: 400px;
+  float: left;
+  text-align: center;
+  line-height: 400px;
 }

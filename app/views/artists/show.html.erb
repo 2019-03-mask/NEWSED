@@ -1,32 +1,58 @@
 <h1>アーティスト詳細</h1>
+<div class="row">
+  <div class="col-lg-3">
+      <div class="artist-image">
+      	<%= attachment_image_tag @artist, :artist_image, size: "300x300" %>
+      </div>
+  </div>
+  <div class="col-lg-9">
+      <h2 class="artist-name"><p>(アーティスト名)</p>
+      	<%= @artist.artist_name %>
+      </h2>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
 
 
-	<%= attachment_image_tag @artist, :artist_image, size: "300x300" %>
-	<%= @artist.artist_name %>
+<% @items.each do |item| %>
+        <div class="artist-list">
+            <div class="item-image">
+              <%= attachment_image_tag item, :item_image, size: "100x100", fallback: "no_image.jpg" %>
+            </div>
+            <div class="item-type">
+              <%= item.item_states %>
+            </div>
+            <div class="item-name">
+              <%= item.item_name %>
+            </div>
+            <div class="artist-name">
+              <%= item.artist.artist_name %>
+            </div>
+            <div class="item-price">
+              <%= item.price %>
+            </div>
+            <div class="item-stock">
+               <% if item.stock == 0 %>
+                      <%= 'Sold Out' %>
+                    <% else %>
+                      <%= item.stock %>
+                    <% end %>
+            </div>
+        </div>
 
-<div>
-   <% @items.each do |item| %>
-   <%= attachment_image_tag item, :item_image, size: "100x100" %>
-   <%= item.item_name %>
-   <%= item.artist.artist_name %>
-   <%= item.stock %>
-   <% if item.stock == 0 %>
-          <%= 'Sold Out' %>
-        <% else %>
-          <%= item.stock %>
-        <% end %>
-
-    <% end %>
+<% end %>
+    </div>
 </div>
 
 
 
-
-
-
-
-
-<div class="artist-item">
-	<%= link_to "アーティスト新品商品", artist_new_item_path(@artist.id) %>
-	<%= link_to "アーティスト中古商品", artist_used_item_path(@artist.id) %>
-</div>
+  <div class="artist-item">
+    <div class="artist-new-index">
+  	     <%= link_to "アーティスト新品商品", artist_new_item_path(@artist.id) %>
+    </div>
+    <div class="artist-used-index">
+  	     <%= link_to "アーティスト中古商品", artist_used_item_path(@artist.id) %>
+    </div>
+  </div>
