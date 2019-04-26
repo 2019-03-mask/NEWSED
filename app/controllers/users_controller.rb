@@ -17,6 +17,11 @@ class UsersController < ApplicationController
   end
 
   def purchase_history
+    @user = current_user
+    @histories = @user.purchase_histories
+    @carts = current_user.carts
+    @bought = @carts.with_deleted
+    # binding.pry
   end
 
   def favorites
