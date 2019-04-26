@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>NEWSED</title>
+    <link rel="stylesheet" href="css/skippr.css"> <!-- skipprのcssファイルを読み込む！ -->
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,9 +15,15 @@
 
             <p class = "title-newsed"><%= link_to "NEWSED", top_path, :style=>"color:white;" %></p>
 
+             <% if user_signed_in? %>
+               <span class="user_first_name"><%= current_user.first_name %></span>
+             <% end %>
+
+
               <ul class="nav-list">
 
             <% if user_signed_in? %>
+                <li class="nav-list-item"><%= link_to "カート一覧", carts_path(current_user.carts) %>
                 <li class="nav-list-item"><%= link_to " 新品一覧", items_path, :style=>"color:white;" %></li>
                 <li class="nav-list-item"><%= link_to " 中古一覧", index_used_items_path, :style=>"color:white;" %></li>
                 <li class="nav-list-item"><%= link_to " マイページ", top_users_path, :style=>"color:white;" %></li>
