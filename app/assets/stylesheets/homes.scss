@@ -8,11 +8,6 @@
   clear: both;
 }
 
-.theTarget{
-  margin-top: -20px;
-}
-
-
 .main-high{
     height: 700px;
     width: 100%;
@@ -22,6 +17,18 @@
   text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
 }
 
+
+/*.mycomment p:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #30e852;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}
+*/
 .neon {
   z-index: 9999;
   position: absolute;

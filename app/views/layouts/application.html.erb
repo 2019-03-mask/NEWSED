@@ -16,14 +16,14 @@
             <p class = "title-newsed"><%= link_to "NEWSED", top_path, :style=>"color:white;" %></p>
 
              <% if user_signed_in? %>
-               <span class="user_first_name"><%= current_user.first_name %></span>
+               <span class="user_first_name"><%= current_user.first_name %><%= current_user.last_name %> さん</span>
              <% end %>
-
+      <nav>
 
               <ul class="nav-list">
 
             <% if user_signed_in? %>
-                <li class="nav-list-item"><%= link_to "カート一覧", carts_path(current_user.carts) %>
+                <li class="nav-list-item"><%= link_to "カート一覧", carts_path(current_user.carts), :style=>"color:white;" %></li>
                 <li class="nav-list-item"><%= link_to " 新品一覧", items_path, :style=>"color:white;" %></li>
                 <li class="nav-list-item"><%= link_to " 中古一覧", index_used_items_path, :style=>"color:white;" %></li>
                 <li class="nav-list-item"><%= link_to " マイページ", top_users_path, :style=>"color:white;" %></li>
@@ -35,6 +35,7 @@
                 <li class="nav-list-item"><%= link_to " ログイン", new_user_session_path, :style=>"color:white;" %></li>
                 <% end %>
                </ul>
+      </nav>
 
     </header>
 　　　　<% if flash[:notice]%>
@@ -45,7 +46,7 @@
 
     <%= yield %>
     <footer>
-      <P class="contact-text"><%= link_to "お問い合わせ", contact_top_path %></P>
+      <P class="contact-text"><%= link_to "お問い合わせ", contact_top_path, :style=>"color:white;" %></P>
           <p class="foter-text">CopyRight 2019 NEWSED All right reserved.</p>
     </footer>
   </body>
