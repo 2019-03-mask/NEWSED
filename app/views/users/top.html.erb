@@ -3,24 +3,37 @@
 
 <div class="top-text">
 
-<h2>
-	<% if user_signed_in? %>
-	<%= current_user.first_name %>
+	 <% if current_user.admin == true %>
+    	<div class="box1">
+                <p class="purchase_history_users"><%= link_to "新品商品一覧", items_path %></p>
+        </div>
+        <div class="box2">
+                <p class="favorites_users"><%= link_to "中古商品一覧", index_used_items_path %></p>
+        </div>
+        <div class="box3">
+                <p class="user-edit"><%= link_to "ユーザー一覧", users_path %></p>
+        </div>
+        <div class="box4">
+                <p class="delete_user"><%= link_to "商品追加", new_item_path %></p>
+        </div>
+        <div class="box5">
+                <p class="contact-index"><%= link_to "問い合わせ一覧", contacts_path %></p>
+        </div>
+
+   <% else %>
+
+    　　 <div class="box1">
+    	     <p class="purchase_history_users"><%= link_to "購入履歴一覧", purchase_history_users_path %></p>
+    	</div>
+    	<div class="box2">
+    		<p class="favorites_users"><%= link_to "お気に入り一覧", favorites_users_path %></p>
+    	</div>
+        <div class="box3">
+        	<p class="user-edit"><%= link_to "ユーザー編集", user_path(current_user.id) %></p>
+    	</div>
+    	<div class="box4">
+    		<p class="delete_user"><%= link_to "退会", delete_user_path(current_user.id) %></p>
+	    </div>
+
 	<% end %>
-さん
-</h2>
-
-　　 <div class="box1">
-	     <p class="purchase_history_users"><%= link_to "購入履歴一覧", purchase_history_users_path %></p>
-	</div>
-	<div class="box2">
-		<p class="favorites_users"><%= link_to "お気に入り一覧", favorites_users_path %></p>
-	</div>
-    <div class="box3">
-    	<p class="user-edit"><%= link_to "ユーザー編集", user_path(current_user.id) %></p>
-	</div>
-	<div class="box4">
-		<p class="delete_user"><%= link_to "退会", delete_user_path(current_user.id) %></p>
-	</div>
-
 </div>

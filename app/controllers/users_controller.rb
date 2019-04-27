@@ -42,6 +42,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @histories = @user.purchase_histories
+    @carts = current_user.carts
+    @bought = @carts.with_deleted
   end
 
   def update
