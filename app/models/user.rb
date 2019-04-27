@@ -19,5 +19,7 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :phone_number, presence: true
 
+  paginates_per 12
+
   acts_as_paranoid
 end

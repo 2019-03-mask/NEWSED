@@ -26,6 +26,7 @@ class UsersController < ApplicationController
 
   def favorites
     @favorites = current_user.favorites
+    @items = Item.page(params[:page]).per(12)
   end
 
   def delete
@@ -38,6 +39,7 @@ class UsersController < ApplicationController
     @users = User.all
     @q = User.ransack(params[:q])
     @users = @q.result(distinct: true)
+    @items = Item.page(params[:page]).per(12)
   end
 
   def show
