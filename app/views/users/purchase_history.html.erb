@@ -1,14 +1,10 @@
 <p>購入履歴一覧</p>
-    <% sum = 0 %>
     <% @histories.zip(@bought).each do |history,cart| %>
+        <%= history.delivery.delivery_state %>
         <%= attachment_image_tag cart.item, :item_image, size: "100x100" %>
         <%= cart.item.item_name  %> /
         <%= cart.item.artist.artist_name %> /
-        <p><%= history.bought_price %>円 ×
+        <p><%= history.bought_price %>円
 	    <%= cart.cart_item %>枚</p>
-	    <% a = history.bought_price*cart.cart_item %>
-	    <% sum += a %>
-	    <p>合計金額
-        <%= sum %> 円</p>
         <%= history.created_at.strftime('%Y/%m/%d') %>
     <% end %>
