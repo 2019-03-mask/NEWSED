@@ -15,39 +15,54 @@
 
             <p class = "title-newsed"><%= link_to "NEWSED", top_path, :style=>"color:white;" %></p>
 
-             <% if user_signed_in? %>
-               <span class="user_first_name"><%= current_user.first_name %><%= current_user.last_name %> さん</span>
-             <% end %>
-      <nav>
-
-              <ul class="nav-list">
-
-            <% if user_signed_in? %>
-                <li class="nav-list-item"><%= link_to "カート一覧", carts_path(current_user.carts), :style=>"color:white;" %></li>
-                <li class="nav-list-item"><%= link_to " 新品一覧", items_path, :style=>"color:white;" %></li>
-                <li class="nav-list-item"><%= link_to " 中古一覧", index_used_items_path, :style=>"color:white;" %></li>
-                <li class="nav-list-item"><%= link_to " マイページ", top_users_path, :style=>"color:white;" %></li>
-                <li class="nav-list-item"><%= link_to " ログアウト", destroy_user_session_path, method: :delete, :style=>"color:white;" %></li>
-                <% else %>
-                <li class="nav-list-item"><%= link_to " 新品一覧", items_path, :style=>"color:white;" %></li>
-                <li class="nav-list-item"><%= link_to " 中古一覧", index_used_items_path, :style=>"color:white;" %></li>
-                <li class="nav-list-item"><%= link_to " 会員登録", new_user_registration_path, :style=>"color:white;" %></li>
-                <li class="nav-list-item"><%= link_to " ログイン", new_user_session_path, :style=>"color:white;" %></li>
-                <% end %>
-               </ul>
-      </nav>
-
-    </header>
-　　　　<% if flash[:notice]%>
-          <div class="flash">
-            <%= flash[:notice]%>
+        <% if flash[:notice]%>
+           <div class="alert alert-warning alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert">
+                  <span aria-hidden="true">×</span>
+                </button>
+                <strong>Info:</strong><%= flash[:notice]%>
+                <p><a href="#" data-dismiss="alert">閉じる</a></p>
           </div>
-      <% end %>
+        <% end %>
+
+             <% if user_signed_in? %>
+               <span class="user_first_name"><i class="fas fa-user-alt"></i>&nbsp;&nbsp;
+                <%= current_user.last_name %><%= current_user.first_name %> さん</span>
+             <% end %>
+         <nav>
+              <ul class="nav-list">
+            <% if user_signed_in? %>
+                <li class="nav-list-item"><i class="fas fa-shopping-cart" style="color: white;" ></i> 
+                  <%= link_to "カート一覧", carts_path(current_user.carts), :style=>"color:white;" %></li>
+                <li class="nav-list-item"><i class="fas fa-compact-disc" style="color: white;" ></i> 
+                  <%= link_to " 新品一覧", items_path, :style=>"color:white;" %></li>
+                <li class="nav-list-item"><i class="fab fa-old-republic" style="color: white;" ></i> 
+                  <%= link_to " 中古一覧", index_used_items_path, :style=>"color:white;" %></li>
+                <li class="nav-list-item"><i class="fas fa-home" style="color: white;" ></i> 
+                  <%= link_to " マイページ", top_users_path, :style=>"color:white;" %></li>
+                <li class="nav-list-item"><i class="fas fa-sign-in-alt" style="color: white;" ></i> 
+                  <%= link_to " ログアウト", destroy_user_session_path, method: :delete, :style=>"color:white;" %></li>
+
+            <% else %>
+
+                <li class="nav-list-item"><i class="fas fa-compact-disc" style="color: white;" ></i> 
+                  <%= link_to " 新品一覧", items_path, :style=>"color:white;" %></li>
+                <li class="nav-list-item"><i class="fab fa-old-republic" style="color: white;" ></i> 
+                  <%= link_to " 中古一覧", index_used_items_path, :style=>"color:white;" %></li>
+                <li class="nav-list-item"><i class="fas fa-axe-battle" style="color: white;" ></i> 
+                  <%= link_to " 会員登録", new_user_registration_path, :style=>"color:white;" %></li>
+                <li class="nav-list-item"><i class="fas fa-sign-in-alt" style="color: white;" ></i> 
+                  <%= link_to " ログイン", new_user_session_path, :style=>"color:white;" %></li>
+            <% end %>
+               </ul>
+         </nav>
+    </header>
 
     <%= yield %>
+
     <footer>
-      <P class="contact-text"><%= link_to "お問い合わせ", contact_top_path, :style=>"color:white;" %></P>
-          <p class="foter-text">CopyRight 2019 NEWSED All right reserved.</p>
+      <p class="contact-text"><%= link_to "お問い合わせ", contact_top_path, :style=>"color:white;" %></p>
+      <p class="foter-text">CopyRight 2019 NEWSED All right reserved.</p>
     </footer>
   </body>
 </html>

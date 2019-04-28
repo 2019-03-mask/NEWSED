@@ -1,44 +1,61 @@
-<h1>カート内一覧</h1>
+<div class="container">
 
- <% if @carts.empty? %>
-  <h1>卍なんか買え卍</h1>
- <% end %>
+  <h1><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>マイカート</h1>
+
+  <% if @carts.empty? %>
+    <h1>カート内に商品がありません</h1>
+  <% end %>
 
 
-  <div>
+  <div class="col-xs-12">
    <% sum = 0 %>
-   <% @carts.each do |cart| %>
-	<div><%= attachment_image_tag cart.item, :item_image, size: "100x100" %></div>
-	<div><%= cart.item.item_name %></div>
-    <div><%= cart.item.artist.artist_name %></div>
-	<div><%= cart.item.price %></div>
-	<div><%= cart.cart_item %></div>
-	<div>
-	  <%= form_for cart, url: cart_update_path(cart.id) do |f| %>
-		 <%= f.select :cart_item, [1,2,3,4,5,6,7,8,9,10] %>
-		  <%= f.submit '変更' %>
-	  <% end %>
-	</div>
-	<div>
-	  <%= link_to '商品を削除', cart_delete_path(cart.id), method: :delete %>
-	</div>
-	  <% a = cart.item.price*cart.cart_item %>
-	  <% sum += a %>
-   <% end %>
-
-    <% if @carts.empty? %>
-     <p></p>
-  <% else %>
-     <p>合計金額</p><%= sum %>円
+      <table class="table">
+      	<thead>
+      		<th></th>
+      		<th>商品名</th>
+      		<th>アーティスト</th>
+      		<th>価格</th>
+      		<th>個数</th>
+      		<th></th>
+      		<th></th>
+      	</thead>
+    <% @carts.each do |cart| %>
+      	<thead>
+		    <th><%= attachment_image_tag cart.item, :item_image, size: "100x100", fallback: "no_image.jpg" %></th>
+			<th><%= cart.item.item_name %></th>
+		    <th><%= cart.item.artist.artist_name %></th>
+			<th>¥<%= cart.item.price %></th>
+			<th><%= cart.cart_item %></th>
+			<th>
+	            <%= form_for cart, url: cart_update_path(cart.id) do |f| %>
+		 	      <%= f.select :cart_item, [1,2,3,4,5,6,7,8,9,10] %>
+		          <%= f.submit '変更', :class => "btn btn-primary" %>
+	            <% end %>
+	        </th>
+	        <th>
+	           <%= link_to '削除', cart_delete_path(cart.id), method: :delete, :class => "btn btn-danger" %>
+	        </th>
+	    </thead>
+	      <% a = cart.item.price*cart.cart_item %>
+	      <% sum += a %>
     <% end %>
+      </table>
+　　　　　　<div class="alert alert-success">
+		    <% if @carts.empty? %>
+		      <p></p>
+		  <% else %>
+		      <h4 class="total-price">合計金額 <%= sum %>円</h4>
+		    <% end %>
+		</div>
   </div>
 
+		<div class="buy_trigger">
+		 <% if @carts.empty? %>
+		   <%= link_to "買い物を続ける", items_path, :class => "btn btn-success active" %>
+		<% else %>
+		   <%= link_to "購入手続きへ", cart_function_path(current_user), :class => "btn btn-success active" %>
+		 <% end %>
+		</div>
 
-
-
- <% if @carts.empty? %>
-   <%= link_to "買い物を続ける", items_path %>
-<% else %>
-   <%= link_to "購入手続きへ", cart_function_path(current_user) %>
- <% end %>
+</div>
 

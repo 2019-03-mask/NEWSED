@@ -1,25 +1,54 @@
-<h1>購入確認</h1>
+<div class="col-xs-9 buy-confirmation">
+	<h1 class="cart-show-title">購入内容確認</h1>
+   <% sum = 0 %>
+      <table class="table">
+      	<thead>
+      		<th></th>
+      		<th>商品名</th>
+      		<th>アーティスト</th>
+      		<th>価格</th>
+      		<th>個数</th>
+      	</thead>
+    <% @carts.each do |cart| %>
+      	<thead>
+		    <th><%= attachment_image_tag cart.item, :item_image, size: "100x100", fallback: "no_image.jpg" %></th>
+			<th><%= cart.item.item_name %></th>
+		    <th><%= cart.item.artist.artist_name %></th>
+			<th>¥<%= cart.item.price %></th>
+			<th><%= cart.cart_item %></th>
+	    </thead>
+	      <% a = cart.item.price*cart.cart_item %>
+	      <% sum += a %>
+    <% end %>
+      </table>
+　　　　　　<div class="alert alert-success">
+		    <% if @carts.empty? %>
+		      <p></p>
+		  <% else %>
+		      <h4 class="total-price">合計金額 <%= sum %>円</h4>
+		    <% end %>
+		</div>
 
-<% @carts.each do |cart| %>
-　<%= attachment_image_tag cart.item, :item_image, size: "100x100" %>
-　<%= cart.item.item_name %>
-　<%= cart.item.artist.artist_name %>
-　<%= cart.item.price %>
-<% end %>
+	　<div class="user-delivery-box">
+	　  <div class="well"><strong>購入者情報確認</strong></div>
+	      <div class="well-text" >
+	         <h4 class="well-text-title">氏名</h4>
+	           <h4 class="well-text-body">
+		　     <%= @user.last_name %>
+		       <%= @user.first_name %>
+		       </h4>
+		     <h4 class="well-text-title">送付先：郵便番号</h4>
+		　　　  <h4 class="well-text-body"><%= @carts.last.delivery_zip_code %></h4>
+		　　  <h4 class="well-text-title">送付先：住所</h4>
+		　　　  <h4 class="well-text-body"><%= @carts.last.delivery_address %></h4>
+		     <%= link_to '購入', purchase_histories_path, method: :post, :class => "btn btn-primary btn-lg btn-block active" %>
+	     </div>
+	 </div>
+ </div>
 
 
-<div>
-　<%= @user.last_name %>
-　<%= @user.first_name %>
-　　<p>送付先：郵便番号</p>
-　　　<%= @carts.last.delivery_zip_code %>
-　　<p>送付先：住所</p>
-　　　<%= @carts.last.delivery_address %>
-</div>
 
 
-
-<%= link_to '購入', purchase_histories_path, method: :post %>
 
 
 

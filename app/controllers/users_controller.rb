@@ -24,8 +24,9 @@ class UsersController < ApplicationController
     # binding.pry
   end
 
+  PER = 1
   def favorites
-    @favorites = current_user.favorites
+    @favorites = current_user.favorites.page(params[:page]).per(PER).reverse_order
     @items = Item.page(params[:page]).per(12)
   end
 
@@ -35,10 +36,11 @@ class UsersController < ApplicationController
     redirect_to top_path
   end
 
+  PER = 3
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(PER).reverse_order
     @q = User.ransack(params[:q])
-    @users = @q.result(distinct: true)
+    @users = @q.result(distinct: true).page(params[:page]).per(PER).reverse_order
     @items = Item.page(params[:page]).per(12)
   end
 
@@ -51,7 +53,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
+    @user.update!(user_params)
     redirect_to top_path
   end
 

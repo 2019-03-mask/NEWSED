@@ -16,31 +16,28 @@
 
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1">
-
-
-<% @items.each do |item| %>
-        <div class="artist-list">
-            <div class="item-image">
-              <%= attachment_image_tag item, :item_image, size: "100x100", fallback: "no_image.jpg" %>
+        <% @items.each do |item| %>
+            <div class="artist-list">
+                  <div class="item-image">
+                    <%= attachment_image_tag item, :item_image, size: "100x100", fallback: "no_image.jpg" %>
+                  </div>
+                  <div class="item-name">
+                    <%= item.item_name %>
+                  </div>
+                  <div class="artist-name">
+                    <%= item.artist.artist_name %>
+                  </div>
+                  <div class="item-price">
+                    <%= item.price %>
+                  </div>
+                  <div class="item-stock">
+                <% if item.stock == 0 %>
+                    <%= 'Sold Out' %>
+              <% else %>
+                    <%= item.stock %>
+                <% end %>
+                  </div>
             </div>
-            <div class="item-name">
-              <%= item.item_name %>
-            </div>
-            <div class="artist-name">
-              <%= item.artist.artist_name %>
-            </div>
-            <div class="item-price">
-              <%= item.price %>
-            </div>
-            <div class="item-stock">
-               <% if item.stock == 0 %>
-                      <%= 'Sold Out' %>
-                    <% else %>
-                      <%= item.stock %>
-                    <% end %>
-            </div>
-        </div>
-
-<% end %>
+        <% end %>
     </div>
 </div>
