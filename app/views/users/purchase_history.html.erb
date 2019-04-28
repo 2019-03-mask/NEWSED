@@ -1,10 +1,15 @@
 <p>購入履歴一覧</p>
+<div class = "item_favorite container" >
+	<div class="row" >
+		<div class="col-lg-10 col-lg-offset-1">
     <% @histories.zip(@bought).each do |history,cart| %>
-        <%= history.delivery.delivery_state %>
         <%= attachment_image_tag cart.item, :item_image, size: "100x100" %>
         <%= cart.item.item_name  %> /
         <%= cart.item.artist.artist_name %> /
         <p><%= history.bought_price %>円
 	    <%= cart.cart_item %>枚</p>
         <%= history.created_at.strftime('%Y/%m/%d') %>
+    </div>
     <% end %>
+</div>
+</div>
