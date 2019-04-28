@@ -1,38 +1,46 @@
-<h1>管理者側：ユーザー編集</h1>
-<%=  form_for(@user) do |f| %>
-  <div class="form-group">
-<%= f.label :last_name, "名前（姓）" %>
-<%=  f.text_field :last_name %>
-<%= f.label :first_name, "名前（名）" %>
-<%=  f.text_field :first_name %>
-</div>
+<div class="admin-user-edit">
+ <h1 class="user-registration-title"><span class="label label-default">ユーザー側：ユーザー編集</span></h1>
+  <%=  form_for(@user) do |f| %>
 
-<div class ='name_kana'>
-<%= f.label :last_name_kana, "名前カナ（姓）" %>
-<%=  f.text_field :last_name_kana %>
-<%= f.label :first_name_kana, "名前カナ（姓）" %>
-<%=  f.text_field :first_name_kana %>
-</div>
+		<%# パスワードを入力したい
+		f.hidden_field :password %>
 
-<div class ='zip_code'>
-<%= f.label :zip_code, "郵便番号" %>
-<%=  f.text_field :zip_code %>
-</div>
+	<div class="field form-group">
+		<%= f.label :last_name, "名前（姓）" %>
+		<%=  f.text_field :last_name, :class => "form-control" %>
+		<%= f.label :first_name, "名前（名）" %>
+		<%=  f.text_field :first_name, :class => "form-control" %>
+	</div>
 
-<div class ='address'>
-<%= f.label :address, "住所" %>
-<%=  f.text_field :address %>
-</div>
+	<div class ='field form-group'>
+		<%= f.label :last_name_kana, "名前カナ（姓）" %>
+		<%=  f.text_field :last_name_kana, :class => "form-control" %>
+		<%= f.label :first_name_kana, "名前カナ（姓）" %>
+		<%=  f.text_field :first_name_kana, :class => "form-control" %>
+	</div>
 
-<div class = 'phone_number'>
-<%= f.label :phone_number, "電話番号" %>
-<%=  f.text_field :phone_number %>
-</div>
+	<div class ='field form-groupe'>
+		<%= f.label :zip_code, "郵便番号" %>
+		<%=  f.text_field :zip_code, :class => "form-control" %>
+	</div>
 
-<div class ='email'>
-<%= f.label :email, "メール" %>
-<%=  f.text_field :email %>
-</div>
+	<div class ='field form-group'>
+		<%= f.label :address, "住所" %>
+		<%=  f.text_field :address, :class => "form-control" %>
+	</div>
 
-<%= f.submit '更新' %>
-<% end %>
+	<div class = 'field form-group'>
+		<%= f.label :phone_number, "電話番号" %>
+		<%=  f.text_field :phone_number, :class => "form-control" %>
+	</div>
+
+	<div class ='field form-group'>
+		<%= f.label :email, "メール" %>
+		<%=  f.text_field :email, :class => "form-control" %>
+	</div>
+
+    <div class="actions form-group">
+		<%= f.submit '更新', :class => "btn btn-primary" %>
+    </div>
+ <% end %>
+</div>

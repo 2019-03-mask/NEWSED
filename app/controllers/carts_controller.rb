@@ -9,7 +9,7 @@ class CartsController < ApplicationController
 
   #購入手続き画面
   def function
-    @user_delivery = Cart.find_by(params[:user_id])
+      @user_delivery = Cart.last
   end
 
   #購入確認画面
@@ -33,22 +33,22 @@ class CartsController < ApplicationController
      #同じ商品を買うときはすでにあるカートの中の個数を増やす
      #Cart.find_by(item_id: params[:id]) && Cart.find_by(user_id: current_user.id)
     if current_cart.exists?(:item_id => params[:id])
-     cart = current_user.carts.find_by(item_id: params[:id])
-     add_stock = cart.cart_item + params[:cart][:cart_item].to_i
-     cart.update(cart_item: add_stock)
-     #カートに入れた商品の数をアイテムから引く
-     stock = item.stock - params[:cart][:cart_item].to_i
-     item.stock = stock
-     item.save
+       cart = current_user.carts.find_by(item_id: params[:id])
+       add_stock = cart.cart_item + params[:cart][:cart_item].to_i
+       cart.update(cart_item: add_stock)
+       #カートに入れた商品の数をアイテムから引く
+       stock = item.stock - params[:cart][:cart_item].to_i
+       item.stock = stock
+       item.save
     else
-     cart_disc = Cart.new(cart_disc_params)
-     cart_disc.item_id = params[:id]
-     cart_disc.user_id = current_user.id
-     cart_disc.save
-     #カートに入れた商品の数をアイテムから引く
-     stock = item.stock - params[:cart][:cart_item].to_i
-     item.stock = stock
-     item.save
+       cart_disc = Cart.new(cart_disc_params)
+       cart_disc.item_id = params[:id]
+       cart_disc.user_id = current_user.id
+       cart_disc.save
+       #カートに入れた商品の数をアイテムから引く
+       stock = item.stock - params[:cart][:cart_item].to_i
+       item.stock = stock
+       item.save
     end
     redirect_to items_path
   end
@@ -88,9 +88,9 @@ class CartsController < ApplicationController
       if cart.delivery_zip_code.nil?
         cart.delivery_zip_code = params[:cart][:delivery_zip_code]
       end
-      cart.save
+        cart.save
     end
-    redirect_to cart_path(current_user)
+      redirect_to cart_path(current_user)
   end
 
   #カート内の商品を購入履歴に反映させるアクション
@@ -104,14 +104,14 @@ class CartsController < ApplicationController
       buy_item.save
       cart.destroy
     end
-    redirect_to cart_complete_path
+      redirect_to cart_complete_path
   end
 
   #カートに商品が入っていない場合にURLからアクセスしようとした時のアクション
   def cart_confirmation
     @carts = current_user.carts.where(deleted_at: nil)
     if @carts.empty?
-      flash[:notice] = "卍だから、なんか買えって言ってんだろ卍"
+      flash[:notice] = "商品が選択させていません"
       redirect_to carts_path
     end
   end

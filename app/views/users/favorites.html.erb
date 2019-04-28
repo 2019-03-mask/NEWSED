@@ -1,18 +1,34 @@
-<h2>お気に入り一覧</h2>
-
+<h1><span class="label label-default">お気に入り一覧</span></h1>
 <div class = "item_favorite container" >
 	<div class="row" >
-	    <% @favorites.each do |favorite| %>
-	    <div class="col-lg-4" >
-	    <%= attachment_image_tag favorite.item, :item_image, size: '100x100' %>
-	    <%= favorite.item.item_states %>/
-	    <%= favorite.item.item_name %>/
-	    <%= favorite.item.artist.artist_name %>/
-	    <%= favorite.item.price %>円
+		<div class="col-lg-10 col-lg-offset-1">
+		    <% @favorites.each do |favorite| %>
+			    <div class="artist-list">
+			    	<div class="item-image">
+				        <%= attachment_image_tag favorite.item, :item_image, size: '100x100' %>
+				    </div>
+				    <div class="item-name">
+				      <h5><span class="label label-default">状態</span>&nbsp;&nbsp;<%= favorite.item.item_states %></h1>
+				    </div>
+				    <div class="artist-name">
+				      <h5><span class="label label-default">商品名</span>&nbsp;&nbsp;<%= favorite.item.item_name %></h1>
+				    </div>
+				    <div class="item-price">
+				      <h5><span class="label label-default">アーティスト</span>&nbsp;&nbsp;<%= favorite.item.artist.artist_name %></h1>
+				    </div>
+				    <div class="item-stock">
+				      <h5><span class="label label-default">価格</span>&nbsp;&nbsp;<%= favorite.item.price %>円</h1>
+				    </div>
+				    <div class="item-stock">
+				      <% if favorite.item.stock == 0 %>
+                        <h5 class="label label-danger"><%= 'Sold Out' %></h5><%= 'Sold Out' %>
+                      <% end %>
+                   </div>
+			    </div>
+		    <% end %>
 	    </div>
-	    <% end %>
     </div>
-</div>
-<div class="paginate">
-	<%= paginate @items, class: "paginate" %>
+   <div class="favorite-paginate">
+     <%= paginate @favorites %>
+   </div>
 </div>

@@ -1,3 +1,9 @@
-<h1>購入完了</h1>
-
-<%= link_to 'マイページ', top_users_path %>
+<div class="buy-complete">
+   <h1 class="buy-complete-message"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>購入完了</h1>
+   <h3 class="buy-complete-text">ご注文ありがとうございます。購入が確定されました。</h3>
+   <h3 class="buy-complete-body">商品の配送状況は
+  	 <%= link_to '購入履歴', purchase_history_users_path %> から確認できます。</h3>
+  <div class="my-page-back">
+   <%= link_to 'マイページへ', top_users_path, :class => "btn btn-primary btn-lg btn-block active" %>
+  </div>
+</div>
