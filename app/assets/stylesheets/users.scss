@@ -30,40 +30,94 @@
 .box1 {
   width: 360px;
   height: 360px;
+  margin: 50px 20px;
   background-color: #F0FFF0;
-  margin-top: 100px;
 }
 
 .box2 {
   width: 360px;
   height: 360px;
+  margin: 50px 20px;
   background-color: #F0FFF0;
-  margin-top: 100px;
 }
 
 .box3 {
   width: 360px;
   height: 360px;
+  margin: 50px 20px;
   background-color: #F0FFF0;
-  margin-top: 100px;
 }
 
 .box4 {
   width: 360px;
   height: 360px;
   background-color: #F0FFF0;
-  margin-top: 100px;
+  margin: 50px 20px;
 }
 
 .box5 {
   width: 360px;
   height: 360px;
   background-color: #F0FFF0;
-  margin: 100px 0px;
+  margin: 60px 0px;
 }
 
 .box1, .box2, .box3, .box4, .box5 {
   display: inline-block;
+}
+
+.purchase_history_users {
+  text-align:center;
+  margin-top: 100px;
+  font-size: 20px;
+}
+
+.user-index {
+  text-align:center;
+  margin-top: 100px;
+  font-size: 20px;
+}
+
+.favorites_users {
+  text-align:center;
+  margin-top: 100px;
+  font-size: 20px;
+}
+
+.delete_user {
+  text-align:center;
+  margin-top: 100px;
+  font-size: 20px;
+}
+
+.contact-index {
+  text-align:center;
+  margin-top: 100px;
+  font-size: 20px;
+}
+
+.purchase_history_users {
+  text-align:center;
+  margin-top: 100px;
+  font-size: 20px;
+}
+
+.user-edit {
+  text-align:center;
+  margin-top: 100px;
+  font-size: 20px;
+}
+
+.favorites_users {
+  text-align:center;
+  margin-top: 100px;
+  font-size: 20px;
+}
+
+.delete_user {
+  text-align:center;
+  margin-top: 100px;
+  font-size: 20px;
 }
 
 .user-admin-index-paginate {
