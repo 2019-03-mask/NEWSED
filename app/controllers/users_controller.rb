@@ -24,7 +24,25 @@ class UsersController < ApplicationController
     # binding.pry
   end
 
-  PER = 1
+  def delivery_update
+    @user = User.find(params[:id])
+    @purchase_histories = @user.purchase_histories
+    @purchase_history = @purchase_histories.find_by(id: params[:purchase_history][:id])
+    @purchase_history.update(purchase_history_params)
+
+    # @purchase_history.where(delivery_id: nil)
+    # # @history = @history.find_by(params[:delivery_id])
+    # @purchase_history.each do |purchase_history|
+    #   if purchase_history.delivery_id.nil?
+    #       purchase_history.delivery_id = params[:purchase_history][:delivery_id]
+    #       # binding.pry
+    #       purchase_history.update(purchase_history_params)
+    #   end
+    # end
+       redirect_to top_path
+  end
+
+
   def favorites
     @favorites = current_user.favorites.page(params[:page]).per(PER).reverse_order
     @items = Item.page(params[:page]).per(12)
@@ -49,6 +67,7 @@ class UsersController < ApplicationController
     @histories = @user.purchase_histories
     @carts = current_user.carts
     @bought = @carts.with_deleted
+    @delivery = Delivery.all
   end
 
   def update
@@ -69,6 +88,10 @@ class UsersController < ApplicationController
       :email, :last_name, :first_name,
       :last_name_kana, :first_name_kana,
       :zip_code, :address, :phone_number)
+  end
+
+  def purchase_history_params
+    params.require(:purchase_history).permit(:delivery_id)
   end
 
 end

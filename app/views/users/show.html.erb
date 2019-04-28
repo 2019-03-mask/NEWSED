@@ -1,35 +1,54 @@
-<h2>管理者側：ユーザー詳細</h2>
+<h2>ユーザー詳細</h2>
 <div class = 'user_information'>
-	<%= @user.last_name %>
-	<%= @user.first_name %>
-	<%= @user.last_name_kana %>
-	<%= @user.first_name_kana %>
-	<%= @user.zip_code %>
-	<%= @user.address %>
-	<%= @user.phone_number %>
-	<%= @user.email %>
+		<div class="name">
+			<p> 姓　<%= @user.last_name %>
+			　名　<%= @user.first_name %></p>
+		</div>
+		<div class="name-kana">
+			<p> セイ　<%= @user.last_name_kana %>
+			　メイ　<%= @user.first_name_kana %></p>
+		</div>
+		<div class="zip">
+			<p> 住所　<%= @user.zip_code %></p>
+		</div>
+		<div class="address">
+			<p> メールアドレス　<%= @user.address %></p>
+		</div>
+		<div class="phone-number">
+			<p> 電話番号　<%= @user.phone_number %></p>
+		</div>
+		<div class="email">
+			<p> 郵便番号　<%= @user.email %></p>
+        </div>
+
+	<%= link_to "編集", admin_edit_path(@user.id) %>
+	<%= link_to "削除", user_path(@user.id), method: :delete, "data-confirm" => "消しちゃうの？　　消さないで！ お願い！　100円あげるから！" %>
+
 </div>
 
-<%= link_to "編集", admin_edit_path(@user.id) %>
-<%= link_to "削除", user_path(@user.id), method: :delete, "data-confirm" => "消しちゃうの？　　消さないで！ お願い！　100円あげるから！" %>
-
 <div class = "user_purchase_history">
-	<h3>購入履歴一覧</h3>
-	 <% if @histories.exists? %>
-	    <% sum = 0 %>
-	    <% @histories.zip(@bought).each do |history,cart| %>
-	        <%= attachment_image_tag cart.item, :item_image, size: "100x100" %>
-	        <%= cart.item.item_name  %> /
-	        <%= cart.item.artist.artist_name %> /
-	        <p><%= history.bought_price %>円 ×
-		    <%= cart.cart_item %>枚</p>
-		    <% a = history.bought_price*cart.cart_item %>
-		    <% sum += a %>
-		    <p>合計金額
-	        <%= sum %> 円</p>
-	        <%= history.created_at.strftime('%Y/%m/%d') %>
-	    <% end %>
-	 <% else %>
-	     <h1>購入履歴はありません</h1>
-	 <% end %>
+		<h3>購入履歴一覧</h3>
+		 <% if @histories.exists? %>
+		    <% sum = 0 %>
+		  <% @histories.zip(@bought).each do |history,cart| %>
+		    <%= form_for history, :url => {:action => 'delivery_update'} do |f| %>
+		    <%= f.hidden_field :id,:value => history.id %>
+		    <%= f.select :delivery_id, @delivery.map{|t| [t.delivery_state, t.id]}, :prompt => "選択してください" %>
+		    <%= f.submit '登録' %>
+		  <% end %>
+		  <%= cart.id %>
+		        <%= attachment_image_tag cart.item, :item_image, size: "100x100" %>
+		        <%= cart.item.item_name  %> /
+		        <%= cart.item.artist.artist_name %> /
+		        <p><%= history.bought_price %>円 ×
+			    <%= cart.cart_item %>枚</p>
+			    <% a = history.bought_price*cart.cart_item %>
+			    <% sum += a %>
+			    <p>合計金額
+		        <%= sum %> 円</p>
+		        <%= history.created_at.strftime('%Y/%m/%d') %>
+		    <% end %>
+		 <% else %>
+		     <h1>購入履歴はありません</h1>
+		 <% end %>
 </div>

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get :purchase_history
     end
     member do
+      patch :delivery_update
       post :favorite
       get :delete
       post :delete

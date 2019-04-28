@@ -1,5 +1,5 @@
 class Delivery < ApplicationRecord
 
-	belongs_to :cart
+	has_many :purchase_histories
 
 end
