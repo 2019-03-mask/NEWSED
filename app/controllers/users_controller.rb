@@ -29,17 +29,7 @@ class UsersController < ApplicationController
     @purchase_histories = @user.purchase_histories
     @purchase_history = @purchase_histories.find_by(id: params[:purchase_history][:id])
     @purchase_history.update(purchase_history_params)
-
-    # @purchase_history.where(delivery_id: nil)
-    # # @history = @history.find_by(params[:delivery_id])
-    # @purchase_history.each do |purchase_history|
-    #   if purchase_history.delivery_id.nil?
-    #       purchase_history.delivery_id = params[:purchase_history][:delivery_id]
-    #       # binding.pry
-    #       purchase_history.update(purchase_history_params)
-    #   end
-    # end
-       redirect_to top_path
+    redirect_to top_path
   end
 
 

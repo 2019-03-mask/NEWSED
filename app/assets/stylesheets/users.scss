@@ -25,6 +25,9 @@
 
 .user_information{
   text-align: center;
+  padding-top: 50px;
+  width: 100%;
+  height: 500px;
 }
 
 .box1 {
@@ -138,4 +141,24 @@
 
 .user-list {
   margin-left: 300px;
+}
+
+.show-item-image{
+  padding-top: 20px;
+}
+
+
+.purchase_history{
+  width: 450px;
+  height: 450px;
+  float: left;
+  text-align: center;
+}
+
+
+.history-item{
+  width: 450px;
+  height: 450px;
+  float: left;
+  text-align: center;
 }
