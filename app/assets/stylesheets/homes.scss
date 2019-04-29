@@ -17,7 +17,6 @@
   text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
 }
 
-
 /*.mycomment p:after {
   content: "";
   position: absolute;
@@ -60,12 +59,11 @@
   font-family: Verdana;
 }
 
-
-
 .main-low{
   width: 100%;
   height: 400px;
 }
+
 .new-index{
   width: 50%;
   height: 400px;
@@ -74,7 +72,11 @@
   line-height: 400px;
   font-size: 50px;
   font-family: Georgia;
+  background-image:url(https://images.pexels.com/photos/1993732/pexels-photo-1993732.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-position: center;
+  background-size: cover;
 }
+
 .used-index{
   width: 50%;
   height: 400px;
@@ -82,5 +84,16 @@
   text-align: center;
   line-height: 400px;
   font-size: 50px;
-    font-family: Georgia;
+  font-family: Georgia;
+  background-image:url(https://images.pexels.com/photos/322457/pexels-photo-322457.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+  background-position: center;
+  background-size: cover;
 }
+
+.new-cd {
+  font-size: 100px;
+}
+
+
+
+

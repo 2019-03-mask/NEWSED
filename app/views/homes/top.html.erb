@@ -14,12 +14,16 @@
     </div>
 
     <div class="main-low clearfix">
-        <div class="new-index">
-            	<p class="new-cd"><%= link_to " 新品CD一覧", items_path %></p>
-        </div>
-        <div class="used-index">
-                <p class="used-cd"><%= link_to " 中古CD一覧", index_used_items_path %></p>
-        </div>
+          <%= link_to items_path do %>
+            <div class="new-index">
+                	<p class="new-cd btn btn-default btn-lg">新品 CD一覧</p>
+            </div>
+          <% end %>
+          <%= link_to index_used_items_path do %>
+            <div class="used-index">
+                    <p class="used-cd btn btn-default btn-lg">中古 CD一覧</p>
+            </div>
+          <% end %>
     </div>
 
 <script>
@@ -27,27 +31,16 @@
         $(".theTarget").skippr();
     });
 
-// オプションを指定してSkipprの実行
 $(".theTarget").skippr({
-    // スライドショーの変化 ("fade" or "slide")
     transition : 'fade',
-    // 変化に係る時間(ミリ秒)
-    speed : 2000,
-    // easingの種類
+    speed : 1500,
     easing : 'easeOutQuart',
-    // ナビゲーションの形("block" or "bubble")
-    navType : 'block',
-    // 子要素の種類("div" or "img")
+    navType : 'bubble',
     childrenElementType : 'div',
-    // ナビゲーション矢印の表示(trueで表示)
-    arrows : true,
-    // スライドショーの自動再生(falseで自動再生なし)
+    arrows : false,
     autoPlay : true,
-    // 自動再生時のスライド切替間隔(ミリ秒)
-    autoPlayDuration : 3000,
-    // キーボードの矢印キーによるスライド送りの設定(trueで有効)
+    autoPlayDuration : 4500,
     keyboardOnAlways : true,
-    // 一枚目のスライド表示時に戻る矢印を表示するかどうか(falseで非表示)
     hidePrevious : false
 });
 </script>
