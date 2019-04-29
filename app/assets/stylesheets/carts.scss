@@ -57,8 +57,16 @@
 .buy-complete {
 	margin: 0 auto;
 	text-align: center;
-	min-height: 70vh;
+	min-height: 71vh;
     position: relative;
+	z-index: 2;
+	padding: 20px;
+	background-color:#fff;
+	color: #888;
+	width: 73%;
+	background-color:#fff;
+	color: #888;
+	opacity: 0.8;
 }
 
 .buy-complete-message {
@@ -101,3 +109,16 @@
 	font-size: 40px;
 	padding-top: 20px;
 }
+
+.video {
+	position: absolute;
+	right: 230px;
+	bottom: -127px;
+	min-height: 40px;
+	width: auto;
+	z-index: 1;
+}
+
+
+
+
