@@ -1,4 +1,7 @@
 class ArtistsController < ApplicationController
+
+  #機能制限をかける
+
   def new_item
     @artist = Artist.find(params[:id])
     @items = @artist.items.where(item_states: "新品")

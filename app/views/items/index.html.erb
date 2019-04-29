@@ -1,8 +1,41 @@
-<div class="header-box">
-      <div class="header-box-box">
-      <p class="new-header">N &nbsp;E &nbsp;W&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C &nbsp;&nbsp;D</p>
-      </div>
-</div>
+  <div id="sampleCarousel" class="carousel slide" data-ride="carousel">
+
+
+        <ol class="carousel-indicators">
+          <li class="active" data-target="#sampleCarousel" data-slide-to="0"></li>
+          <li data-target="#sampleCarousel" data-slide-to="1"></li>
+          <li data-target="#sampleCarousel" data-slide-to="2"></li>
+        </ol>
+
+
+        <div class="carousel-inner" role="listbox" style="height:400px;"  >
+          <div class="item active picture">
+            <img src="https://kabekin.com/uploads/converted/16/08/16/1476462164-kabekin5-LgkD-1440x900-MM-100.jpg" alt="First slide" style="height:400px;">
+          </div>
+          <div class="item picture">
+            <img src="http://wallpoper.com/images/00/38/41/28/headphones-music_00384128.jpg" alt="Second slide" style="height:400px;">
+          </div>
+          <div class="item picture">
+            <img src="https://images3.alphacoders.com/318/thumb-1920-31895.jpg" alt="Third slide" style="height:400px;">
+          </div>
+        </div>
+
+
+        <a class="left carousel-control" href="#sampleCarousel" role="button" data-slide="prev">
+          <span class="" aria-hidden="true"></span>
+          <span class="sr-only">前へ</span>
+        </a>
+
+
+        <a class="right carousel-control" href="#sampleCarousel" role="button" data-slide="next">
+          <span class="" aria-hidden="true"></span>
+          <span class="sr-only">次へ</span>
+        </a>
+
+
+    </div>
+
+
   <div class="row clearfix">
       <div class="search-artist">
           <%= search_form_for @search, url: items_path do |f| %>

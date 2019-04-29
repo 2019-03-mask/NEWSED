@@ -1,13 +1,13 @@
-<div class="col-xs-9 buy-confirmation">
-	<h1 class="cart-show-title">購入内容確認</h1>
+<div class="buy-confirmation">
+	<h1 class="cart-show-title"><span class="label label-success">購入内容確認</span></h1>
    <% sum = 0 %>
       <table class="table">
       	<thead>
       		<th></th>
-      		<th>商品名</th>
-      		<th>アーティスト</th>
-      		<th>価格</th>
-      		<th>個数</th>
+      		<th><span class="label label-default">商品名</span></th>
+      		<th><span class="label label-default">アーティスト</span></th>
+      		<th><span class="label label-default">価格</span></th>
+      		<th><span class="label label-default">個数</span></th>
       	</thead>
     <% @carts.each do |cart| %>
       	<thead>

@@ -1,17 +1,17 @@
 <div class="container">
-     <h1>商品詳細</h1>
+     <h1 class="item-detail-main-title"><span class="label label-default">Detail</span></h1>
 
       <div class="col-lg-5">
         <%= attachment_image_tag @item, :item_image, size: '400x400', fallback: "no_image.jpg" %>
         <div class="user-signed-in-menu">
-    <% if current_user.present? %>
-       <div class="cart-function">
+         <div class="cart-function">
+  <% if user_signed_in? %>
           <%= form_for @cart_disc, url: cart_add_item_path(id: @item.id) do |f| %>
-             <%= f.label :cart_item, "枚数の選択" %>
+             <%= f.label :cart_item, "枚数を選択" %>
              <%= f.select :cart_item, [1,2,3,4,5,6,7,8,9,10] %>
-             <%= f.submit 'カートに入れる' %>
-           <% end %>
-       </div>
+             <%= f.submit 'カートに入れる', class: "btn btn-primary" %>
+          <% end %>
+         </div>
        <div class="favorite-function">
         <% if @item.favorited_by?(current_user) %>
           <li>
@@ -28,34 +28,43 @@
             <% end %>
          </li>
        <% end %>
-    <% end %>
+<% else %>
+        <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+         <%= @item.favorites.count %>いいね
+  <% end %>
        </div>
      </div>
 　　　　<div class="user-singed-in-menu">
-        <% if user_signed_in? %>
-          <% if current_user.admin == true %>
-                <div class="admin">
-                  <%= link_to "編集", edit_item_path(@item.id) %>
-                  <%= link_to "削除", item_path(@item), method: :delete, "data-confirm" => "消しちゃうの？　　消さないで！ お願い！　100円あげるから！" %>
-                </div>
-          <% end %>
+              <div class="admin-limited-menu">
+      <% if user_signed_in? %>
+        <% if current_user.admin == true %>
+                <%= link_to "編集", edit_item_path(@item.id), class: "btn btn-success" %>
+                <%= link_to "削除", item_path(@item), method: :delete, "data-confirm" => "消しちゃうの？消さないで！お願い！100円あげるから！", class: "btn btn-danger" %>
         <% end %>
+      <% end %>
+              </div>
 
           <div class="reviews-index">
-            <h4 class="reviews-index-title">コメント一覧</h4>
-               <% @item.reviews.each do |review|  %>
-                  <div class = 'reviews'>
-                     <h5><span class="label label-default">タイトル</span></h5>
-                     <%= review.review_title %>
-                     <h5><span class="label label-default">コメント</span></h5>
-                     <%= review.review_text %>
-            <% if user_signed_in? %>
-                   <% if review.user_id == current_user.id %>
-                     <%= link_to '削除', item_review_path(@item, current_user.reviews), method: :delete %>
-                   <% end %>
-            <% end %>
-                  </div>
-               <% end %>
+              <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                    コメント一覧
+                    <span class="caret"></span>
+                  </button>
+                      <ul class="dropdown-menu" role="menu" style="max-height:200px;overflow:scroll;" >
+                        <li role="presentation">
+                            <% @item.reviews.each do |review|  %>
+                          <a href="#">
+                            <%= review.review_text %>
+                    <% if user_signed_in? %>
+                       <% if review.user_id == current_user.id %>
+                            <%= link_to '削除', item_review_path(@item, current_user.reviews), method: :delete, class: "btn btn-primary btn-xs" %>
+                       <% end %>
+                    <% end %>
+                            <% end %>
+                            </a>
+                          </li>
+                      </ul>
+              </div>
           </div>
         </div>
       </div>
@@ -63,13 +72,15 @@
 
     <div class = 'col-lg-7'>
       <div class="item-detail">
-        <h1>[CD<%= @item.item_type %>]</h1>
-           <h2><%= @item.item_states %></h2>
+        <h1>[CD<%= @item.item_type %>]&nbsp;&nbsp;&nbsp;&nbsp;<span class="label label-success"><%= @item.item_states %></span></h1>
+
          <h4><span class="label label-default">タイトル</span></h4>
            <h2><%= @item.item_name %></h2>
 
          <h4><span class="label label-default">アーティスト</span></h4>
-           <h2><%= @item.artist.artist_name %></h2>
+           <%= link_to artist_path(@item.artist.id) do %>
+             <h2><%= @item.artist.artist_name %></h2>
+           <% end %>
 
          <h4><span class="label label-default">価格</span></h4>
            <h2>¥<%= @item.price %></h2>
@@ -89,22 +100,19 @@
       </div>
 
        <div class="review-create-form">
-         <% if current_user.present? %>
-             <%= form_for @review, url: item_reviews_path(item_id: @item.id) do |f| %>
-               <div class = 'review'>
-        　       <div>
-                    <p>タイトル</p>
-                    <%= f.text_field :review_title %>
-                </div>
-                <div>
-                    <p>コメント</p>
-                    <%= f.text_area :review_text %>
-                </div>
-                   <%= f.submit '送信' %>
-             <% end %>
+    <% if user_signed_in? %>
+           <%= form_for @review, url: item_reviews_path(item_id: @item.id) do |f| %>
+             <div class = 'review'>
+                  <%= f.hidden_field :review_title, :value => "title" %>
+              <div>
+                  <h3 class="review-upload-form"><span class="label label-primary">コメント投稿</span></h3>
+                  <%= f.text_area :review_text, :size=>"60x2" %>
               </div>
-        <% end %>
-      </div>
+                 <%= f.submit '送信', :class => "btn btn-primary btn-lg active" %>
+           <% end %>
+            </div>
+    <% end %>
+       </div>
     </div>
 </div>
 

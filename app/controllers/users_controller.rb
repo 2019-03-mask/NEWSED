@@ -21,7 +21,6 @@ class UsersController < ApplicationController
     @histories = @user.purchase_histories
     @carts = current_user.carts
     @bought = @carts.with_deleted
-    # binding.pry
   end
 
   def delivery_update

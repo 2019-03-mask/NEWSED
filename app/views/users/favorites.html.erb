@@ -8,16 +8,20 @@
 				        <%= attachment_image_tag favorite.item, :item_image, size: '100x100' %>
 				    </div>
 				    <div class="item-name">
-				      <h5><span class="label label-default">状態</span>&nbsp;&nbsp;<%= favorite.item.item_states %></h1>
+				      <h5><span class="label label-default">状態</span>&nbsp;&nbsp;<%= favorite.item.item_states %></h5>
 				    </div>
 				    <div class="artist-name">
-				      <h5><span class="label label-default">商品名</span>&nbsp;&nbsp;<%= favorite.item.item_name %></h1>
+				     <%= link_to item_path(favorite.item.id) do %>
+				      <h5><span class="label label-default">商品名</span>&nbsp;&nbsp;<%= favorite.item.item_name %></h5>
+				     <% end %>
 				    </div>
 				    <div class="item-price">
-				      <h5><span class="label label-default">アーティスト</span>&nbsp;&nbsp;<%= favorite.item.artist.artist_name %></h1>
+				     <%= link_to item_path(favorite.item.artist.id) do %>
+				      <h5><span class="label label-default">アーティスト</span>&nbsp;&nbsp;<%= favorite.item.artist.artist_name %></h5>
+				     <% end %>
 				    </div>
 				    <div class="item-stock">
-				      <h5><span class="label label-default">価格</span>&nbsp;&nbsp;<%= favorite.item.price %>円</h1>
+				      <h5><span class="label label-default">価格</span>&nbsp;&nbsp;<%= favorite.item.price %>円</h5>
 				    </div>
 				    <div class="item-stock">
 				      <% if favorite.item.stock == 0 %>

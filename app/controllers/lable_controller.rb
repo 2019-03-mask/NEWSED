@@ -1,4 +1,8 @@
 class LableController < ApplicationController
+
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only:[:create]
+
   def index
   	@lable = Lable.new
     @lables = Lable.all
@@ -8,6 +12,13 @@ class LableController < ApplicationController
   	lable = Lable.new(lable_params)
   	lable.save
   	redirect_to new_item_path
+  end
+
+  def ensure_correct_user
+    if current_user.admin == false
+      flash[:notice] = "許可されていないアクションです"
+      redirect_to top_users_path
+    end
   end
 
   private
