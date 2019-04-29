@@ -1,51 +1,88 @@
-<div class="header-box-used">
-      <div class="header-box-box">
-      <p class="new-header">U &nbsp;S &nbsp;E &nbsp;D &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C &nbsp;&nbsp;D</p>
-      </div>
-</div>
-  <div class="row clearfix">
-      <div class="search-artist">
-          <%= search_form_for @search, url: items_path do |f| %>
-          <%= f.label :商品検索 %>
-          <%= f.search_field :item_name_cont %>
-          <%= f.submit "検索" %>
-          <% end %>
-      </div>
-      <div class="col-lg-3">
-        <% @rank.each.with_index(1) do |rank, i| %>
-        <div class="rank">
-          <h3 class="ranking"><%= "第#{i}位" %></h3>
-          <%= rank.item_name %>
-        </div>
-        <% end %>
-      </div>
-      <div class="col-lg-9">
-            <% @items.each do |item|%>
-            <div class="item-list">
-              <div class="item-image">
-                 <%= attachment_image_tag item, :item_image, size: "100x100", fallback: "no_image.jpg" %>
-              </div>
-              <div class="item-name">
-                 <p><%= link_to item.item_name, item_path(item.id) %></p>
-              </div>
-              <div class="artist-name">
-                 <p><%= link_to item.artist.artist_name, artist_path(item.artist.id) %></p>
-              </div>
-              <div class="item-price">
-                <p> ¥ <%= item.price %></p>
-              </div>
-              <div class="item-stock">
-                  <% if item.stock == 0 %>
-                    <%= 'Sold Out!!' %>
-                  <% end %>
-              </div>
-            </div>
+  <div id="sampleCarousel" class="carousel slide" data-ride="carousel">
 
-              <% end %>
-      </div>
-      <div class="paginate">
-            <%= paginate @items, class: "paginate" %>
-      </div>
+
+        <ol class="slide-top">
+          <li class="active" data-target="#sampleCarousel" data-slide-to="0"></li>
+          <li data-target="#sampleCarousel" data-slide-to="1"></li>
+          <li data-target="#sampleCarousel" data-slide-to="2"></li>
+        </ol>
+
+
+        <div class="carousel-inner" role="listbox" style="height:400px;"  >
+          <div class="item active picture">
+            <img src="https://d2l930y2yx77uc.cloudfront.net/production/uploads/images/5028219/picture_pc_1c5215de6fb72cfebe54a17746e35411.jpg" alt="First slide" style="height:400px; width:100%;" >
+          </div>
+          <div class="item picture">
+            <img src="http://img01.gahag.net/201509/23o/gahag-0006916675.jpg" alt="Second slide" style="height:400px; width:100%;">
+          </div>
+          <div class="item picture">
+            <img src="https://i1.wp.com/akirayoshida.com/diary/wp/wp-content/uploads/2016/02/a764fa0b0f6a8ab080fcddddec44718b.jpg?fit=700%2C394&ssl=1" alt="Third slide" style="height:400px; width:100%;">
+          </div>
+        </div>
+
+
+        <a class="left carousel-control" href="#sampleCarousel" role="button" data-slide="prev">
+          <span class="" aria-hidden="true"></span>
+          <span class="sr-only">前へ</span>
+        </a>
+
+
+        <a class="right carousel-control" href="#sampleCarousel" role="button" data-slide="next">
+          <span class="" aria-hidden="true"></span>
+          <span class="sr-only">次へ</span>
+        </a>
+
+
   </div>
+
+
+
+<div class="used-information">
+  <h1 class="usedcd">U S E D C D</h1>
+    <div class="row clearfix">
+        <div class="search-artist">
+            <%= search_form_for @search, url: items_path do |f| %>
+            <%= f.label :商品検索 %>
+            <%= f.search_field :item_name_cont %>
+            <%= f.submit "検索" %>
+            <% end %>
+        </div>
+        <div class="col-lg-3">
+          <% @rank.each.with_index(1) do |rank, i| %>
+          <div class="rank">
+            <h3 class="ranking"><%= "第#{i}位" %></h3>
+            <%= rank.item_name %>
+          </div>
+          <% end %>
+        </div>
+        <div class="col-lg-9">
+              <% @items.each do |item|%>
+              <div class="item-list">
+                <div class="item-image">
+                   <%= attachment_image_tag item, :item_image, size: "100x100", fallback: "no_image.jpg" %>
+                </div>
+                <div class="item-name">
+                   <p><%= link_to item.item_name, item_path(item.id) %></p>
+                </div>
+                <div class="artist-name">
+                   <p><%= link_to item.artist.artist_name, artist_path(item.artist.id) %></p>
+                </div>
+                <div class="item-price">
+                  <p> ¥ <%= item.price %></p>
+                </div>
+                <div class="item-stock">
+                    <% if item.stock == 0 %>
+                      <%= 'Sold Out!!' %>
+                    <% end %>
+                </div>
+              </div>
+
+                <% end %>
+        </div>
+        <div class="paginate">
+              <%= paginate @items, class: "paginate" %>
+        </div>
+    </div>
+</div>
 
 

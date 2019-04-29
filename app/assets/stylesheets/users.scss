@@ -148,11 +148,9 @@
 }
 
 
-.purchase_history{
-  width: 450px;
-  height: 450px;
-  float: left;
-  text-align: center;
+.purchase-history{
+  min-height: 100vh;
+  position: relative;
 }
 
 
