@@ -27,6 +27,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @purchase_histories = @user.purchase_histories
     @purchase_history = @purchase_histories.find_by(id: params[:purchase_history][:id])
+    @purchase_history.delivery_id = @purchase_histories.find_by(params[:purchase_history][:delivery_id])
     @purchase_history.update(purchase_history_params)
     redirect_to top_path
   end
@@ -40,6 +41,7 @@ class UsersController < ApplicationController
   def delete
     user = current_user
     user.destroy
+    flash[:notice] = "退会しました"
     redirect_to top_path
   end
 

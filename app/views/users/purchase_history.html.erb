@@ -1,5 +1,6 @@
 <div class="purchase-history clearfix">
   <h1>購入履歴一覧</h1>
+  <% sum = 0 %>
 
     <% @histories.zip(@bought).each do |history,cart| %>
       <div class="history-item ">
@@ -21,6 +22,22 @@
         <div class="">
             <h4><%= history.created_at.strftime('%Y/%m/%d') %></h4>
         </div>
+        <div class="">
+            <h4><%= cart.delivery_zip_code %></h4>
+        </div>
+        <div class="">
+            <h4><%= cart.delivery_address %></h4>
+        </div>
+        <div class="">
+            <%  if history.delivery_id != nil %>
+            <%= history.delivery.delivery_state %>
+            <% end %>
+        </div>
       </div>
+      <% a = cart.cart_item*history.bought_price %>
+    <% sum += a %>
     <% end %>
 </div>
+<div class="">
+    <h2 class="total-price">合計金額 <%= sum %>円</h2>
+  </div>

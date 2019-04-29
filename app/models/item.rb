@@ -18,7 +18,6 @@ class Item < ApplicationRecord
   end
 
   validates :item_name, presence: true
-  validates :item_image, presence: true
   validates :item_states, presence: true
   validates :item_type, presence: true
   validates :price, presence: true
