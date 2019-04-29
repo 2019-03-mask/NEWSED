@@ -13,7 +13,7 @@ before_action :ensure_correct_user, only:[:show, :index]
   end
 
   def index
-    @contacts = Contact.all
+    @contacts = Contact.all.page(params[:page]).per(10).reverse_order
   end
 
   def create

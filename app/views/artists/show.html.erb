@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-lg-3">
       <div class="artist-image">
-      	<%= attachment_image_tag @artist, :artist_image, size: "300x300" %>
+      	<%= attachment_image_tag @artist, :artist_image, size: "300x300", fallback: "no_image.jpg" %>
       </div>
   </div>
   <div class="col-lg-9">

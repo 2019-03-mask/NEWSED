@@ -1,15 +1,26 @@
-<p>購入履歴一覧</p>
-<div class = "item_favorite container" >
-	<div class="row" >
-		<div class="col-lg-10 col-lg-offset-1">
+<h1>購入履歴一覧</h1>
+<div class="purchase-history clearfix">
+
     <% @histories.zip(@bought).each do |history,cart| %>
-        <%= attachment_image_tag cart.item, :item_image, size: "100x100" %>
-        <%= cart.item.item_name  %> /
-        <%= cart.item.artist.artist_name %> /
-        <p><%= history.bought_price %>円
-	    <%= cart.cart_item %>枚</p>
-        <%= history.created_at.strftime('%Y/%m/%d') %>
-    </div>
+      <div class="history-item ">
+        <div class="history-image">
+            <%= attachment_image_tag cart.item, :item_image, size: "200x200", fallback: "no_image.jpg" %>
+        </div>
+        <div class="">
+            <h4><%= cart.item.item_name  %></h4>
+        </div>
+        <div class="">
+            <h4><%= link_to cart.item.artist.artist_name, artist_path(cart.item.artist.id) %></h4>
+        </div>
+        <div class="">
+            <h4><%= history.bought_price %>円</h4>
+        </div>
+        <div class="">
+    	    <h4><%= cart.cart_item %>枚</h4>
+        </div>
+        <div class="">
+            <h4><%= history.created_at.strftime('%Y/%m/%d') %></h4>
+        </div>
+      </div>
     <% end %>
-</div>
 </div>

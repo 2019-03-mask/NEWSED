@@ -111,7 +111,7 @@ class CartsController < ApplicationController
   def cart_confirmation
     @carts = current_user.carts.where(deleted_at: nil)
     if @carts.empty?
-      flash[:notice] = "商品が選択させていません"
+      flash[:notice] = "商品が選択されていません"
       redirect_to carts_path
     end
   end
