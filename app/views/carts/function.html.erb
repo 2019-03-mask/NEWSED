@@ -2,12 +2,12 @@
  <h1 class="delivery-title"><span class="label label-success">配送先情報を入力</span></h1>
   <div class="col-lg-6">
 
-    <%= form_for(@user_delivery) do |f| %>
+    <%= form_for @user_delivery,url: carts_address_change_path, method: :post do |f| %>
      <h3><span class="label label-default">配送先郵便番号</span></h3>
-      <%= f.text_field :delivery_zip_code, :class => "form-control", :size=> "80", placeholder: "郵便番号を入力してください" %>
+      <%= f.text_field :delivery_zip_code, autocomplete: "zip_code", :class => "form-control", :size=> "80", placeholder: "郵便番号を入力してください" %>
 
      <h3><span class="label label-default">配送先住所</span></h3>
-      <%= f.text_field :delivery_address, :class => "form-control", :size=> "80", placeholder: "住所を入力してください" %>
+      <%= f.text_field :delivery_address, :class => "form-control", autocomplete: "address", :size=> "80", placeholder: "住所を入力してください" %>
 
       <div class="form-submit" >
      <h4><%= f.submit '次に進む', :class => "btn btn-primary btn-block active", :size=> "80" %></h4>

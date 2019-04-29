@@ -9,12 +9,14 @@ class CartsController < ApplicationController
 
   #購入手続き画面
   def function
-      @user_delivery = Cart.last
+    @user_delivery = Cart.last
+    @user_delivery.delivery_zip_code = current_user.zip_code
+    @user_delivery.delivery_address = current_user.address
   end
 
   #購入確認画面
   def show
-    @user = User.find(params[:id])
+    @user = current_user
     @carts = current_user.carts.where(deleted_at: nil)
     @buy_item = PurchaseHistory.new
   end
@@ -80,17 +82,9 @@ class CartsController < ApplicationController
 
   #カートテーブルの配送先住所を入力するアクション
   def address_change
-    carts = current_user.carts
-    carts.each do |cart|
-      if cart.delivery_address.nil?
-        cart.delivery_address = params[:cart][:delivery_address]
-      end
-      if cart.delivery_zip_code.nil?
-        cart.delivery_zip_code = params[:cart][:delivery_zip_code]
-      end
-        cart.save
-    end
-      redirect_to cart_path(current_user)
+    cart = Cart.last
+    cart.update(address_change_params)
+    redirect_to cart_path(cart.id)
   end
 
   #カート内の商品を購入履歴に反映させるアクション
@@ -126,4 +120,12 @@ class CartsController < ApplicationController
      params.require(:cart).permit(:cart_item)
   end
 
+  def address_change_params
+    params.require(:cart).permit(
+      :delivery_address, :delivery_zip_code)
+  end
+
+  def _params
+    params.require(:user).permit(:name, :profile_image)
+end
 end
