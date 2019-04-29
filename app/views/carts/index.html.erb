@@ -1,11 +1,11 @@
 <div class="container">
 
-  <h1><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>マイカート</h1>
+  <h1 class="cart-main-title"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>マイカート</h1>
 
   <% if @carts.empty? %>
-    <h1>カート内に商品がありません</h1>
-  <% end %>
-
+    <h1 class="cart-nothing-messeage">カート内に商品がありません</h1>
+    <div class="still-shopping"><%= link_to "買い物を続ける", items_path, :class => "btn btn-primary btn-lg btn-block active" %></div>
+<% else %>
 
   <div class="col-xs-12">
    <% sum = 0 %>
@@ -40,18 +40,19 @@
 	      <% sum += a %>
     <% end %>
       </table>
-　　　　　　<div class="alert alert-success">
+　　　　　　<div class="total-price">
 		    <% if @carts.empty? %>
 		      <p></p>
 		  <% else %>
-		      <h4 class="total-price">合計金額 <%= sum %>円</h4>
+		      <h4 class="alert alert-success">合計金額 <%= sum %>円</h4>
 		    <% end %>
 		</div>
   </div>
+<% end %>
 
 		<div class="buy_trigger">
 		 <% if @carts.empty? %>
-		   <%= link_to "買い物を続ける", items_path, :class => "btn btn-success active" %>
+		  <div class="continue-shopping"></div>
 		<% else %>
 		   <%= link_to "購入手続きへ", cart_function_path(current_user), :class => "btn btn-success active" %>
 		 <% end %>

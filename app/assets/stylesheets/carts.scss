@@ -15,8 +15,11 @@
 	margin-left: 950px;
 }
 
-.delivery {
-	margin: 0 auto;
+.delivery-main-box {
+	margin-left: 450px;
+	margin-top: 60px;
+    min-height: 60vh;
+    position: relative;
 }
 
 .delivery-title {
@@ -28,7 +31,9 @@
 }
 
 .buy-confirmation {
-	margin: 0 auto;
+	margin: 70px 200px;
+    min-height: 100vh;
+    position: relative;
 }
 
 .well {
@@ -46,17 +51,21 @@
 
 .well-text-body {
 	padding-bottom: 10px;
+	text-align: center;
 }
 
 .buy-complete {
 	margin: 0 auto;
 	text-align: center;
+	min-height: 70vh;
+    position: relative;
 }
 
 .buy-complete-message {
 	color: green;
 	font-family: 'Arial Black',sans-serif;
 	font-weight: 800;
+	padding-top: 45px;
 }
 
 .buy-complete-text {
@@ -65,4 +74,30 @@
 
 .my-page-back {
 	padding-top: 70px;
+	width: 45%;
+	margin: 0 auto;
+}
+
+.container {
+	min-height: 100vh;
+    position: relative;
+}
+
+.cart-nothing-messeage {
+	text-align: center;
+	padding-top: 120px;
+	font-family: 'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',fantasy;
+	font-size: 60px;
+}
+
+.still-shopping {
+	width: 40%;
+	margin-left: 350px;
+	padding-top: 60px;
+}
+
+.cart-main-title {
+	font-family: 'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',fantasy;
+	font-size: 40px;
+	padding-top: 20px;
 }
